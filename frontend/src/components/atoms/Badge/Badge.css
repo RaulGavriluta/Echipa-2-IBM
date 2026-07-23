@@ -2,33 +2,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  
-  padding: 10px 22px; 
-  min-width: 60px; 
-  
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 14px;
-  line-height: 1;
-  color: #ffffff;
-  
-  border-radius: 15px 0 20px 0; 
-  
+  padding: 0.625rem 1.5rem;
+  min-width: 3.75rem;
   width: fit-content;
   box-sizing: border-box;
+  line-height: 1;
+  color: var(--color-white);
+  border-radius: 0.9rem 0 1.25rem 0;
 }
 
 .badge--hot {
-  background-color: #f74b81; 
+  background-color: var(--color-badge-hot);
 }
 
 .badge--sale {
-  background-color: #67bcee; 
+  background-color: var(--color-badge-sale);
 }
 
 .badge--new {
-  background-color: #3bb77e; 
+  background-color: var(--color-badge-new);
 }
 
 .badge--discount {
-  background-color: #f59758; 
+  background-color: var(--color-badge-discount);
 }
