@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import heroImg from "./assets/hero.png";
+import "./App.css";
+import RangeSlider from "./components/atoms/RangeSlider";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [count, setCount] = useState(0);
+  const [low, setLow] = useState(500);
+  const [high, setHigh] = useState(1000);
   return (
     <>
       <section id="center">
@@ -114,9 +115,21 @@ function App() {
       </section>
 
       <div className="ticks"></div>
-      <section id="spacer"></section>
+      <section id="spacer">
+        <RangeSlider
+          min={0}
+          max={5000}
+          step={100}
+          valueLow={low}
+          valueHigh={high}
+          onChange={(l, h) => {
+            setLow(l);
+            setHigh(h);
+          }}
+        />
+      </section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
