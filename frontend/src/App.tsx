@@ -1,21 +1,11 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
 import "./App.css";
-import RangeSlider from "./components/atoms/RangeSlider";
 function App() {
   const [count, setCount] = useState(0);
-  const [low, setLow] = useState(500);
-  const [high, setHigh] = useState(1000);
   return (
     <>
       <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
+        <div className="hero"></div>
         <div>
           <h1>Get started</h1>
           <p>
@@ -42,16 +32,10 @@ function App() {
           <p>Your questions, answered</p>
           <ul>
             <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
+              <a href="https://vite.dev/" target="_blank"></a>
             </li>
             <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
+              <a href="https://react.dev/" target="_blank"></a>
             </li>
           </ul>
         </div>
@@ -116,24 +100,9 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer">
-        <RangeSlider
-          min={0}
-          max={5000}
-          step={100}
-          valueLow={low}
-          valueHigh={high}
-          onChange={(l, h) => {
-            setLow(l);
-            setHigh(h);
-          }}
-        />
       </section>
     </>
   );
-import "./App.css";
-
-function App() {
-  return <></>;
 }
 
 export default App;
