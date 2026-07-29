@@ -1,0 +1,121 @@
+@import "../../../utils/colors.css";
+@import "../../../utils/font.css";
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(31, 51, 71, 0.1);
+  transform: translateY(-0.125rem);
+}
+
+.product-card-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.product-card-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.product-card-image {
+  width: 100%;
+  max-height: 12.5rem;
+  object-fit: contain;
+}
+
+.product-card-category {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.product-card-title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-dark);
+  line-height: 1.35rem;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.125rem;
+}
+
+.product-card-rating-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.product-card-seller {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.product-card-seller-name {
+  color: var(--color-green);
+  font-weight: 500;
+}
+
+.product-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 1rem;
+  margin-top: auto;
+}
+
+.product-card-prices {
+  display: flex;
+  align-items: baseline;
+  gap: 0.375rem;
+}
+
+.product-card-price-current {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.product-card-price-old {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.product-card-add-button.button {
+  gap: 0.35rem;
+  background-color: var(--color-green-soft);
+  border-color: var(--color-green-soft);
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+.product-card-add-button.button:not(:disabled):hover {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+  color: var(--color-white);
+}
