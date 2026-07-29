@@ -1,0 +1,26 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.logo__image {
+  height: auto;
+  max-height: 3rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.logo--sm .logo__image {
+  max-height: 2rem;
+}
+
+.logo--md .logo__image {
+  max-height: 3rem;
+}
+
+.logo--lg .logo__image {
+  max-height: 3.5rem;
+}
