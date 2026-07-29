@@ -1,10 +1,7 @@
 import "./App.css";
-import Badge from "./components/atoms/Badge";
+
 function App() {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 }
 
 export default App;
