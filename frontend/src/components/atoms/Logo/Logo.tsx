@@ -1,3 +1,4 @@
+import defaultLogo from '../../../assets/logo.png';
 import "./Logo.css";
 
 export type LogoSize = "sm" | "md" | "lg";
@@ -6,12 +7,12 @@ export interface LogoProps {
   src?: string;
   alt?: string;
   href?: string;
-  size?: string;
+  size?: LogoSize;
   className?: string;
 }
 
 const Logo = ({
-  src = "/assets/logo.png",
+  src = defaultLogo,
   alt = "Nest Grocery",
   href = "/",
   size = "md",
