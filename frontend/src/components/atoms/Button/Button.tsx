@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react'
 import clsx from 'clsx'
 import './Button.css'
 
-type ButtonVariant = 'primary' | 'outline' | 'ghost'
+type ButtonVariant = 'primary' | 'outline' | 'ghost' | 'newsletter'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
