@@ -22,12 +22,9 @@ const Checkbox = ({
   onChange,
   className = "",
 }: CheckboxProps) => {
-  const generatedId =
-    id || `checkbox-${Math.random().toString(36).substring(2, 9)}`;
-
   return (
     <label
-      htmlFor={generatedId}
+      htmlFor={id}
       className={`checkbox-wrapper ${isDisabled ? "checkbox-wrapper--disabled" : ""} ${className}`.trim()}
     >
       <input
