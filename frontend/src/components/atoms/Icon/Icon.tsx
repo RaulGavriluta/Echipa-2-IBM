@@ -25,19 +25,13 @@ const Icon = ({
       className={`icon ${className}`.trim()}
       aria-label={ariaLabel}
       role={ariaLabel ? "img" : undefined}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: size,
-        height: size,
-      }}
+      style={{ width: size, height: size }}
     >
       {src ? (
         <img
           src={src}
           alt={alt || ariaLabel || "icon"}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          className="icon__image"
         />
       ) : IconComponent ? (
         <IconComponent size={size} color={color} />
