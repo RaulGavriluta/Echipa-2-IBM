@@ -23,7 +23,7 @@
 .checkbox-custom {
   width: 1.125rem;
   height: 1.125rem;
-  border: 1.5px solid var(--color-border-light);
+  border: 2px solid var(--color-border-light);
   border-radius: 4px;
   background-color: var(--color-white);
   transition:
