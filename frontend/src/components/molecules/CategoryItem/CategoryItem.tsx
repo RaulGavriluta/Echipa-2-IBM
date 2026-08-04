@@ -1,43 +1,34 @@
-import React from "react";
-import Badge from "../../atoms/Badge/Badge";
-import Icon from "../../atoms/Icon/Icon";
+import Badge from "../../atoms/Badge";
+import Icon from "../../atoms/Icon"
 import "./CategoryItem.css";
 
 export interface CategoryItemProps {
-  id?: string;
   label: string;
   count: number;
   iconSrc: string;
-  href?: string;
   isActive?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-  className?: string;
+  onClick?: () => void;
 }
 
 const CategoryItem = ({
-  id,
   label,
   count,
   iconSrc,
-  href = "#",
   isActive = false,
   onClick,
-  className = "",
 }: CategoryItemProps) => {
   return (
-    <a
-      id={id}
-      href={href}
+    <div
+      className={`category-item ${isActive ? "category-item--active" : ""}`}
       onClick={onClick}
-      className={`category-item ${isActive ? "category-item--active" : ""} ${className}`.trim()}
     >
       <div className="category-item__content">
-        <Icon src={iconSrc} size="1.875rem" alt={label} />
+        <Icon src={iconSrc} size="1.5rem" alt={label} />
         <span className="category-item__label">{label}</span>
       </div>
-
-      <Badge className="category-item__badge">{count}</Badge>
-    </a>
+      
+      <Badge variant="count">{count}</Badge>
+    </div>
   );
 };
 
