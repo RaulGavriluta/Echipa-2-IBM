@@ -1,7 +1,13 @@
 import React from "react";
 import "./Badge.css";
 
-export type BadgeVariant = "hot" | "sale" | "new" | "discount";
+export type BadgeVariant =
+  | "hot"
+  | "sale"
+  | "new"
+  | "discount"
+  | "count"
+  | "notification";
 
 export interface BadgeProps {
   children: React.ReactNode;
