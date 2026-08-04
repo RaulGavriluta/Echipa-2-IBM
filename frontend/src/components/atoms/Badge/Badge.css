@@ -26,3 +26,28 @@
 .badge--discount {
   background-color: var(--color-badge-discount);
 }
+
+.badge--count {
+  padding: 0 0.375rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 3.125rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--color-green-soft);
+  color: var(--color-green);
+}
+
+.badge--notification {
+  padding: 0 0.25rem;
+  min-width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 3.125rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  position: absolute;
+  top: -0.375rem;
+  right: -0.375rem;
+}
