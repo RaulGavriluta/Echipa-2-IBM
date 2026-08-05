@@ -19,7 +19,7 @@
 
 .header-action__label {
   font-size: 0.875rem;
-  color: #7e7e7e;
+  color: var(--color-text-muted);
   font-weight: 400;
   line-height: 1;
 }
