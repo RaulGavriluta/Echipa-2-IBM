@@ -59,3 +59,10 @@ export interface Newsletter {
     invalid: string
   }
 }
+
+export interface HeroSlide {
+  id: string;
+  title: string;
+  subtitle: string;
+  backgroundImage?: string;
+}
