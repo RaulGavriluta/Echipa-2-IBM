@@ -1,6 +1,5 @@
 import { useState } from "react";
 import RangeSlider from "../components/atoms/RangeSlider";
-
 function Home() {
   const [low, setLow] = useState(500);
   const [high, setHigh] = useState(1000);
