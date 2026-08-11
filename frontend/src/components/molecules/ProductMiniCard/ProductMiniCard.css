@@ -32,17 +32,51 @@
   gap: 0.25rem;
 }
 
-.product-mini-card__title {
+.product-mini-card--compact .product-mini-card__title {
   font-size: var(--font-size-base);
   font-weight: 700;
   color: var(--color-green);
   margin: 0;
-  line-height: 1.25;
+}
+
+.product-mini-card--detailed .product-mini-card__title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin: 0;
   transition: color 0.2s ease;
 }
 
-.product-mini-card:hover .product-mini-card__title {
-  color: var(--color-green-dark);
+.product-mini-card--detailed:hover .product-mini-card__title {
+  color: var(--color-green);
+}
+
+.product-mini-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.product-mini-card__stars {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.product-mini-card__star-icon {
+  font-size: var(--font-size-xs);
+}
+
+.product-mini-card__star-icon--active {
+  color: var(--color-star-active);
+}
+
+.product-mini-card__star-icon--inactive {
+  color: var(--color-star-inactive);
+}
+
+.product-mini-card__rating-value {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
 .product-mini-card__price-wrapper {
@@ -53,6 +87,12 @@
 
 .product-mini-card__price {
   font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.product-mini-card__price-compact {
+  font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--color-text-muted);
 }
@@ -61,21 +101,4 @@
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   text-decoration: line-through;
-}
-
-.product-mini-card__rating {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.125rem;
-}
-
-.product-mini-card__star-icon {
-  color: var(--color-badge-discount);
-  font-size: var(--font-size-xs);
-}
-
-.product-mini-card__rating-value {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
 }

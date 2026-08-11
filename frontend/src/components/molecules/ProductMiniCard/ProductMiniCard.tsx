@@ -9,6 +9,7 @@ export interface ProductMiniCardProps {
   price: number;
   oldPrice?: number;
   rating?: number;
+  variant?: "compact" | "detailed";
   to?: string;
   href?: string;
   onClick?: () => void;
@@ -20,66 +21,91 @@ const ProductMiniCard: React.FC<ProductMiniCardProps> = ({
   imageSrc,
   price,
   oldPrice,
-  rating,
+  rating = 4.0,
+  variant = "compact",
   to,
   href,
   onClick,
   className = "",
 }) => {
-  const combinedClassName = `product-mini-card ${className}`.trim();
+  const isDetailed = variant === "detailed";
+  const Element: any = to ? Link : href ? "a" : "div";
 
-  const cardContent = (
-    <>
+  const renderStars = () =>
+    isDetailed ? (
+      [...Array(5)].map((_, i) => (
+        <FaStar
+          key={i}
+          className={`product-mini-card__star-icon ${
+            i < Math.round(rating)
+              ? "product-mini-card__star-icon--active"
+              : "product-mini-card__star-icon--inactive"
+          }`}
+        />
+      ))
+    ) : (
+      <FaStar className="product-mini-card__star-icon product-mini-card__star-icon--active" />
+    );
+
+  const renderPrices = (isCompact = false) => (
+    <div className="product-mini-card__price-wrapper">
+      <span
+        className={
+          isCompact
+            ? "product-mini-card__price-compact"
+            : "product-mini-card__price"
+        }
+      >
+        ${price.toFixed(2)}
+      </span>
+      {oldPrice && !isCompact && (
+        <span className="product-mini-card__old-price">
+          ${oldPrice.toFixed(2)}
+        </span>
+      )}
+    </div>
+  );
+
+  const renderRating = () => (
+    <div className="product-mini-card__rating">
+      {isDetailed ? (
+        <div className="product-mini-card__stars">{renderStars()}</div>
+      ) : (
+        renderStars()
+      )}
+      <span className="product-mini-card__rating-value">
+        {isDetailed ? `(${rating.toFixed(1)})` : rating}
+      </span>
+    </div>
+  );
+
+  return (
+    <Element
+      to={to}
+      href={href}
+      onClick={onClick}
+      role={!to && !href && onClick ? "button" : undefined}
+      className={`product-mini-card product-mini-card--${variant} ${className}`.trim()}
+    >
       <div className="product-mini-card__image-wrapper">
         <img src={imageSrc} alt={title} className="product-mini-card__image" />
       </div>
 
       <div className="product-mini-card__content">
         <h4 className="product-mini-card__title">{title}</h4>
-
-        <div className="product-mini-card__price-wrapper">
-          <span className="product-mini-card__price">${price.toFixed(2)}</span>
-          {oldPrice && (
-            <span className="product-mini-card__old-price">
-              ${oldPrice.toFixed(2)}
-            </span>
-          )}
-        </div>
-
-        {rating !== undefined && (
-          <div className="product-mini-card__rating">
-            <FaStar className="product-mini-card__star-icon" />
-            <span className="product-mini-card__rating-value">{rating}</span>
-          </div>
+        {isDetailed ? (
+          <>
+            {renderRating()}
+            {renderPrices()}
+          </>
+        ) : (
+          <>
+            {renderPrices(true)}
+            {renderRating()}
+          </>
         )}
       </div>
-    </>
-  );
-
-  if (to) {
-    return (
-      <Link to={to} className={combinedClassName} onClick={onClick}>
-        {cardContent}
-      </Link>
-    );
-  }
-
-  if (href) {
-    return (
-      <a href={href} className={combinedClassName} onClick={onClick}>
-        {cardContent}
-      </a>
-    );
-  }
-
-  return (
-    <div
-      className={combinedClassName}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-    >
-      {cardContent}
-    </div>
+    </Element>
   );
 };
 
