@@ -11,6 +11,10 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   user-select: none;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .category-card:hover {
