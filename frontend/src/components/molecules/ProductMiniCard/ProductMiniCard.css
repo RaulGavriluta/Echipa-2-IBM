@@ -1,0 +1,81 @@
+.product-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.product-mini-card__image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: var(--color-bg-card-light);
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.product-mini-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-mini-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.product-mini-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-green);
+  margin: 0;
+  line-height: 1.25;
+  transition: color 0.2s ease;
+}
+
+.product-mini-card:hover .product-mini-card__title {
+  color: var(--color-green-dark);
+}
+
+.product-mini-card__price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.product-mini-card__price {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.product-mini-card__old-price {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.product-mini-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.125rem;
+}
+
+.product-mini-card__star-icon {
+  color: var(--color-badge-discount);
+  font-size: var(--font-size-xs);
+}
+
+.product-mini-card__rating-value {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
