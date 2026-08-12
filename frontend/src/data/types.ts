@@ -75,9 +75,16 @@ export interface Newsletter {
   placeholder: string;
   buttonText: string;
   errors: {
-    empty: string;
-    invalid: string;
-  };
+    empty: string
+    invalid: string
+  }
+}
+
+export interface HeroSlide {
+  id: string;
+  title: string;
+  subtitle: string;
+  backgroundImage?: string;
 }
 export interface CategoryFilterItem {
   id: string;
