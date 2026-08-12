@@ -44,7 +44,7 @@ const NewsletterForm = ({ onSubscribe, className }: NewsletterFormProps) => {
       <div className="newsletter-form-input-wrapper">
         <Icon
           icon={FaRegPaperPlane}
-          size="1.125rem"
+          size="var(--font-size-md)"
           color="var(--color-text-muted)"
           className="newsletter-form-icon"
         />
