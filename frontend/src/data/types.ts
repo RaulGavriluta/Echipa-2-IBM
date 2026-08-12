@@ -52,10 +52,16 @@ export interface FooterData {
   };
 }
 export interface Newsletter {
-  placeholder: string
-  buttonText: string
+  placeholder: string;
+  buttonText: string;
   errors: {
-    empty: string
-    invalid: string
-  }
+    empty: string;
+    invalid: string;
+  };
+}
+
+export interface FilterOption {
+  id: string;
+  label: string;
+  count?: number;
 }
