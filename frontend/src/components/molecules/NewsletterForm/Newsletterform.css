@@ -1,12 +1,9 @@
-@import "../../../utils/colors.css";
-@import "../../../utils/font.css";
-
 .newsletter-form {
   width: 100%;
 }
 
 .newsletter-form-input-wrapper {
-  align-items: stretch;
+  align-items: center;
   background-color: var(--color-white);
   border: 1px solid var(--color-border-light);
   border-radius: 3.125rem;
@@ -27,6 +24,7 @@
 .newsletter-form-icon {
   flex-shrink: 0;
   margin-left: 1rem;
+  align-self: center;
 }
 
 .newsletter-form-input {
