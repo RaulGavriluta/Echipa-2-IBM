@@ -29,7 +29,7 @@ const Checkbox = ({
     >
       <input
         type="checkbox"
-        id={generatedId}
+        id={id}
         checked={isChecked}
         defaultChecked={isDefaultChecked}
         disabled={isDisabled}
