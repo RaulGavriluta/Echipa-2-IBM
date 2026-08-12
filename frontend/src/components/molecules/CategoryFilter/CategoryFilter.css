@@ -1,0 +1,46 @@
+@import "../../../utils/colors.css";
+@import "../../../utils/font.css";
+
+.category-filter {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.04);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-filter-header {
+  position: relative;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.category-filter-header::after {
+  content: "";
+  position: absolute;
+  bottom: -0.0625rem;
+  left: 0;
+  width: 3.5rem;
+  height: 0.125rem;
+  background-color: var(--color-green);
+  border-radius: 0.125rem;
+}
+
+.category-filter-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.category-filter-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  
+}
