@@ -3,6 +3,26 @@ export interface Category {
   value: string;
 }
 
+export interface ProductCategory {
+  label: string;
+  value: string;
+}
+
+export type BadgeVariant = "hot" | "sale" | "new" | "discount";
+
+export interface Product {
+  id: string;
+  title: string;
+  category: ProductCategory;
+  image: string;
+  currentPrice: number;
+  oldPrice?: number;
+  rating?: number;
+  seller?: string;
+  badgeText?: string;
+  badgeVariant?: BadgeVariant;
+}
+
 export interface FooterLink {
   label: string;
   href: string;
@@ -52,8 +72,8 @@ export interface FooterData {
   };
 }
 export interface Newsletter {
-  placeholder: string
-  buttonText: string
+  placeholder: string;
+  buttonText: string;
   errors: {
     empty: string
     invalid: string
@@ -65,4 +85,10 @@ export interface HeroSlide {
   title: string;
   subtitle: string;
   backgroundImage?: string;
+}
+export interface CategoryFilterItem {
+  id: string;
+  label: string;
+  count: number;
+  iconSrc: string;
 }
