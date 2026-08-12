@@ -3,6 +3,26 @@ export interface Category {
   value: string;
 }
 
+export interface ProductCategory {
+  label: string;
+  value: string;
+}
+
+export type BadgeVariant = "hot" | "sale" | "new" | "discount";
+
+export interface Product {
+  id: string;
+  title: string;
+  category: ProductCategory;
+  image: string;
+  currentPrice: number;
+  oldPrice?: number;
+  rating?: number;
+  seller?: string;
+  badgeText?: string;
+  badgeVariant?: BadgeVariant;
+}
+
 export interface FooterLink {
   label: string;
   href: string;
