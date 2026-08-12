@@ -92,3 +92,36 @@ export interface CategoryFilterItem {
   count: number;
   iconSrc: string;
 }
+export interface NavLink {
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+}
+
+export interface HeaderActionItem {
+  label: string;
+  href: string;
+  icon: string;
+  count?: number;
+}
+
+export interface NavbarData {
+  header: {
+    links: FooterLink[];
+    promoText: string;
+    phone: PhoneNumber;
+    languages: string[];
+    currencies: string[];
+  };
+  mainNav: {
+    logo: string;
+    searchPlaceholder: string;
+    locationLabel: string;
+    actions: HeaderActionItem[];
+  };
+  bottomNav: {
+    browseLabel: string;
+    links: NavLink[];
+    phone: PhoneNumber;
+  };
+}

@@ -1,4 +1,4 @@
-import defaultLogo from '../../../assets/logo.png';
+import defaultLogo from "/assets/logo.png";
 import "./Logo.css";
 
 export type LogoSize = "sm" | "md" | "lg";
