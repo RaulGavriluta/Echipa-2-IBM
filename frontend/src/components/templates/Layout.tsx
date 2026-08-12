@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-
+import Footer from "../organisms/Footer/Footer";
 function Layout() {
   return (
     <div className="app-layout">
@@ -7,7 +7,7 @@ function Layout() {
       <main>
         <Outlet />
       </main>
-      {/* <Footer /> TBA */}
+      <Footer />
     </div>
   );
 }
