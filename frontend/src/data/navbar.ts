@@ -3,7 +3,7 @@ import type { NavbarData } from "./types";
 const navbarData: NavbarData = {
   header: {
     links: [
-      { label: "About Us", href: "#" },
+      { label: "About Us", href: "/about" },
       { label: "My Account", href: "#" },
       { label: "Wishlist", href: "#" },
       { label: "Order Tracking", href: "#" },
@@ -32,7 +32,7 @@ const navbarData: NavbarData = {
     links: [
       { label: "Deals", href: "#" },
       { label: "Home", href: "/", hasDropdown: true },
-      { label: "About", href: "#" },
+      { label: "About", href: "/about" },
       { label: "Shop", href: "#", hasDropdown: true },
       { label: "Vendors", href: "#", hasDropdown: true },
       { label: "Mega menu", href: "#", hasDropdown: true },
