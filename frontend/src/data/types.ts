@@ -147,3 +147,21 @@ export interface AboutHeroData {
   mainImage: string;
   galleryImages: string[];
 }
+
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  socials?: {
+    facebook?: string;
+    twitter?: string;
+    instagram?: string;
+    youtube?: string;
+  };
+}
