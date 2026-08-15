@@ -131,3 +131,19 @@ export interface NavbarData {
     phone: PhoneNumber;
   };
 }
+
+export interface FeatureItem {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+export interface AboutHeroData {
+  title: string;
+  paragraphs: string[];
+  mainImage: string;
+  galleryImages: string[];
+}
