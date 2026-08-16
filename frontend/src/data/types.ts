@@ -165,3 +165,21 @@ export interface TeamMember {
     youtube?: string;
   };
 }
+
+export interface ContactServiceItem {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  highlighted?: boolean;
+}
+
+export interface ContactLocationItem {
+  id: string;
+  title: string;
+  addressLine1: string;
+  addressLine2: string;
+  phone: string;
+  email: string;
+  mapLink: string;
+}
