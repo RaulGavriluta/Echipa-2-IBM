@@ -1,9 +1,13 @@
 import React from "react";
-import ContactLocationCard from "../../components/molecules/ContactLocationCard/ContactLocationCard";
+import ContactLocationCard from "../../components/molecules/ContactLocationCard";
+import ContactForm from "../../components/organisms/ContactForm";
+import NewsletterBanner from "../../components/organisms/NewsletterBanner";
 import {
   contactIntroData,
   contactServicesData,
   contactLocationsData,
+  contactFormData,
+  contactBannerData,
 } from "../../data/contactData";
 import "./Contact.css";
 
@@ -69,6 +73,35 @@ const Contact: React.FC = () => {
             ))}
           </div>
         </section>
+
+        <section className="contact-bottom">
+          <div className="contact-bottom__main">
+            <span className="contact-bottom__badge">
+              {contactFormData.badge}
+            </span>
+            <h2 className="contact-bottom__title">{contactFormData.title}</h2>
+            <p className="contact-bottom__note">{contactFormData.note}</p>
+            <div className="contact-bottom__form-wrapper">
+              <ContactForm buttonText={contactFormData.buttonText} />
+            </div>
+          </div>
+
+          <div className="contact-bottom__side">
+            <img
+              src={contactFormData.sideImage}
+              alt={contactFormData.sideImageAlt}
+              className="contact-bottom__photo"
+            />
+          </div>
+        </section>
+
+        <NewsletterBanner
+          title={contactBannerData.title}
+          subtitlePrefix={contactBannerData.subtitlePrefix}
+          subtitleHighlight={contactBannerData.subtitleHighlight}
+          sideImage={contactBannerData.sideImage}
+          sideImageAlt={contactBannerData.sideImageAlt}
+        />
       </div>
     </div>
   );
