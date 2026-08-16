@@ -38,7 +38,7 @@ const navbarData: NavbarData = {
       { label: "Mega menu", href: "#", hasDropdown: true },
       { label: "Blog", href: "#", hasDropdown: true },
       { label: "Pages", href: "#", hasDropdown: true },
-      { label: "Contact", href: "#" },
+      { label: "Contact", href: "/contact" },
     ],
     phone: {
       number: "1900 - 888",
