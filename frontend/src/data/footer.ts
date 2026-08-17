@@ -5,7 +5,7 @@ export const footerData: FooterData = {
     name: "Nest",
     subtitle: "MART & GROCERY",
     description: "Awesome grocery store",
-    logo: "/src/assets/logo.png",
+    logo: "/assets/logo.png",
   },
   contact: {
     address:

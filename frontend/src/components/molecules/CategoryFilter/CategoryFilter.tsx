@@ -29,9 +29,9 @@ const CategoryFilter = ({
       ? externalActiveCategory
       : internalActiveCategory;
 
-  const handleCategoryClick = (categoryLabel: string) => {
+  const handleCategoryClick = (categoryId: string) => {
     const nextCategory =
-      currentActiveCategory === categoryLabel ? null : categoryLabel;
+      currentActiveCategory === categoryId ? null : categoryId;
 
     if (externalActiveCategory === undefined) {
       setInternalActiveCategory(nextCategory);
@@ -47,16 +47,19 @@ const CategoryFilter = ({
       </div>
 
       <div className="category-filter-content">
-        {categories.map((category) => (
-          <CategoryItem
-            key={category.id || category.label}
-            label={category.label}
-            iconSrc={category.iconSrc}
-            count={category.count}
-            isActive={currentActiveCategory === category.label}
-            onClick={() => handleCategoryClick(category.label)}
-          />
-        ))}
+        {categories.map((category) => {
+          const categoryKey = category.id || category.label;
+          return (
+            <CategoryItem
+              key={categoryKey}
+              label={category.label}
+              iconSrc={category.iconSrc}
+              count={category.count}
+              isActive={currentActiveCategory === categoryKey}
+              onClick={() => handleCategoryClick(categoryKey)}
+            />
+          );
+        })}
       </div>
     </div>
   );

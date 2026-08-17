@@ -1,3 +1,5 @@
+import NewsletterBanner from "../components/organisms/NewsletterBanner";
+
 export interface Category {
   label: string;
   value: string;
@@ -21,6 +23,12 @@ export interface Product {
   seller?: string;
   badgeText?: string;
   badgeVariant?: BadgeVariant;
+  salesCount?: number;
+  viewsCount?: number;
+  createdAt?: string; 
+  description?: string;
+  color?: string;
+  condition?: string; 
 }
 
 export interface FooterLink {
@@ -182,4 +190,43 @@ export interface ContactLocationItem {
   phone: string;
   email: string;
   mapLink: string;
+}
+
+export interface DealProduct {
+  id: string;
+  title: string;
+  image: string;
+  currentPrice: number;
+  oldPrice?: number;
+  rating?: number;
+  seller?: string;
+  deadline: string;
+}
+
+export interface CtaCardData {
+  id: string;
+  title: string;
+  imageUrl: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+export interface NewProduct {
+  id: string;
+  title: string;
+  imageSrc: string;
+  price: number;
+}
+
+export interface ShopCategory {
+  id: string;
+  label: string;
+  iconSrc: string;
+  href?: string;
+}
+export interface NewsletterBanner {
+  title: string;
+  description: string;
+  imageUrl: string;
+  sideImage: string;
 }

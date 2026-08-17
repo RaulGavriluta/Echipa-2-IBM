@@ -14,12 +14,20 @@ const PopularProducts = () => {
     ),
   ];
 
-  const filteredProducts =
+  const categoryFiltered =
     activeCategory === "all"
       ? products
       : products.filter(
           (product) => product.category.value === activeCategory,
         );
+
+  const filteredProducts = [...categoryFiltered]
+    .sort((a, b) => {
+      const popularityA = (a.viewsCount || 0) + (a.salesCount || 0);
+      const popularityB = (b.viewsCount || 0) + (b.salesCount || 0);
+      return popularityB - popularityA;
+    })
+    .slice(0, 8);
 
   return (
     <section className="popular-products">

@@ -1,6 +1,4 @@
 import { type ContactServiceItem, type ContactLocationItem } from "./types";
-import contactPhoto from "../assets/contact/contact-photo.png";
-import contactAlt from "../assets/contact/alt.png";
 
 export const contactIntroData = {
   badge: "How can help you ?",
@@ -78,7 +76,7 @@ export const contactFormData = {
   title: "Drop Us a Line",
   note: "Your email address will not be published. Required fields are marked *",
   buttonText: "Send message",
-  sideImage: contactPhoto,
+  sideImage: "/assets/contact/contact-photo.png",
   sideImageAlt: "Contact support representative",
 };
 
@@ -86,6 +84,6 @@ export const contactBannerData = {
   title: "Stay home & get your daily needs from our shop",
   subtitlePrefix: "Start Your Daily Shopping with",
   subtitleHighlight: "Nest Mart",
-  sideImage: contactAlt,
+  sideImage: "/assets/contact/alt.png",
   sideImageAlt: "Fresh green cabbage and vegetables",
 };
