@@ -1,22 +1,3 @@
-import icon1 from "../assets/about/icon1.png";
-import icon2 from "../assets/about/icon2.png";
-import icon3 from "../assets/about/icon3.png";
-import icon4 from "../assets/about/icon4.png";
-import icon5 from "../assets/about/icon5.png";
-import icon6 from "../assets/about/icon6.png";
-
-import heroMainImg from "../assets/about/heroMainImg.png";
-import about1 from "../assets/about/about1.png";
-import about2 from "../assets/about/about2.png";
-import about3 from "../assets/about/about3.png";
-
-import partner from "../assets/about/partner.png";
-
-import team1 from "../assets/about/team1.png";
-import team2 from "../assets/about/team2.png";
-
-import alt from "../assets/about/alt.png";
-
 export interface FeatureItem {
   id: string;
   icon: string;
@@ -57,14 +38,18 @@ export const aboutHeroData: AboutHeroData = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate id est laborum.",
     "Ius ferri velit sanctus cu, sed at soleat accusata. Dictas prompta et Ut placerat legendos interpre. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante Etiam sit amet orci eget. Quis commodo odio aenean sed adipiscing. Turpis massa tincidunt dui ut ornare lectus. Auctor elit sed vulputate mi sit amet. Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate id est laborum.",
   ],
-  mainImage: heroMainImg,
-  galleryImages: [about1, about2, about3],
+  mainImage: "/assets/about/heroMainImg.png",
+  galleryImages: [
+    "/assets/about/about1.png",
+    "/assets/about/about2.png",
+    "/assets/about/about3.png",
+  ],
 };
 
 export const aboutFeaturesData: FeatureItem[] = [
   {
     id: "best-prices",
-    icon: icon1,
+    icon: "/assets/about/icon1.png",
     title: "Best Prices & Offers",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
@@ -73,7 +58,7 @@ export const aboutFeaturesData: FeatureItem[] = [
   },
   {
     id: "wide-assortment",
-    icon: icon2,
+    icon: "/assets/about/icon2.png",
     title: "Wide Assortment",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
@@ -82,7 +67,7 @@ export const aboutFeaturesData: FeatureItem[] = [
   },
   {
     id: "free-delivery",
-    icon: icon3,
+    icon: "/assets/about/icon3.png",
     title: "Free Delivery",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
@@ -91,7 +76,7 @@ export const aboutFeaturesData: FeatureItem[] = [
   },
   {
     id: "easy-returns",
-    icon: icon4,
+    icon: "/assets/about/icon4.png",
     title: "Easy Returns",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
@@ -100,7 +85,7 @@ export const aboutFeaturesData: FeatureItem[] = [
   },
   {
     id: "satisfaction",
-    icon: icon5,
+    icon: "/assets/about/icon5.png",
     title: "100% Satisfaction",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
@@ -109,7 +94,7 @@ export const aboutFeaturesData: FeatureItem[] = [
   },
   {
     id: "daily-deal",
-    icon: icon6,
+    icon: "/assets/about/icon6.png",
     title: "Great Daily Deal",
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
@@ -142,7 +127,7 @@ export const aboutPartnerData = {
         "Volutpat diam ut venenatis tellus in metus. Nec dui nunc mattis enim ut tellus eros donec ac odio orci ultrices in.",
     },
   ],
-  image: partner,
+  image: "/assets/about/partner.png",
 };
 
 export const aboutStatsData: StatItem[] = [
@@ -167,14 +152,14 @@ export const aboutTeamSectionData = {
       id: "1",
       name: "H. Merinda",
       role: "CEO & Co-Founder",
-      image: team1,
+      image: "/assets/about/team1.png",
       socials: { facebook: "#", twitter: "#", instagram: "#", youtube: "#" },
     },
     {
       id: "2",
       name: "Dilan Specter",
       role: "Head Engineer",
-      image: team2,
+      image: "/assets/about/team2.png",
       socials: { facebook: "#", twitter: "#", instagram: "#", youtube: "#" },
     },
   ] as TeamMember[],
@@ -184,6 +169,6 @@ export const aboutBannerData = {
   title: "Stay home & get your daily needs from our shop",
   subtitlePrefix: "Start Your Daily Shopping with",
   subtitleHighlight: "Nest Mart",
-  sideImage: alt,
+  sideImage: "/assets/about/alt.png",
   sideImageAlt: "Delivery representative with fresh groceries",
 };
