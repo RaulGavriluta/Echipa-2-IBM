@@ -56,6 +56,7 @@ const PopularProducts = () => {
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
+            id={product.id}
             image={product.image}
             title={product.title}
             category={product.category.label}

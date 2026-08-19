@@ -6,7 +6,6 @@
   user-select: none;
 }
 
-/* ── Track ── */
 .range-slider__track {
   position: relative;
   height: 0.375rem;
@@ -23,7 +22,6 @@
   pointer-events: none;
 }
 
-/* ── Hidden native inputs ── */
 .range-slider__input {
   position: absolute;
   top: 50%;
@@ -91,7 +89,6 @@
   background-color: var(--color-green-dark);
 }
 
-/* ── Labels ── */
 .range-slider__labels {
   display: flex;
   justify-content: space-between;

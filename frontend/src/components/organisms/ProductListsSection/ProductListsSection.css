@@ -46,9 +46,10 @@
   gap: 1rem;
 }
 
-/* Hover transitions on the list items */
 .product-lists-column-items .product-mini-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
@@ -59,7 +60,6 @@
   background-color: var(--color-bg-hover-subtle);
 }
 
-/* Responsive Media Queries */
 @media (max-width: 1024px) {
   .product-lists-section {
     grid-template-columns: repeat(2, 1fr);

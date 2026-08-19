@@ -33,7 +33,7 @@ const navbarData: NavbarData = {
       { label: "Deals", href: "#" },
       { label: "Home", href: "/", hasDropdown: true },
       { label: "About", href: "/about" },
-      { label: "Shop", href: "#", hasDropdown: true },
+      { label: "Shop", href: "/shop", hasDropdown: true },
       { label: "Vendors", href: "#", hasDropdown: true },
       { label: "Mega menu", href: "#", hasDropdown: true },
       { label: "Blog", href: "#", hasDropdown: true },

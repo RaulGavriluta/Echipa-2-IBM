@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { FiShoppingBag, FiMinus, FiPlus, FiTrash2, FiArrowLeft } from "react-icons/fi";
+import {
+  FiShoppingBag,
+  FiMinus,
+  FiPlus,
+  FiTrash2,
+  FiArrowLeft,
+} from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
 import ProductMiniCard from "../../components/molecules/ProductMiniCard/ProductMiniCard";
 import Button from "../../components/atoms/Button";
@@ -9,7 +15,8 @@ import "./Cart.css";
 const TAX_RATE = Number(import.meta.env.VITE_TAX_RATE) || 0.08;
 
 const Cart = () => {
-  const { items, removeFromCart, updateQuantity, clearCart, totalPrice } = useCart();
+  const { items, removeFromCart, updateQuantity, clearCart, totalPrice } =
+    useCart();
 
   const taxAmount = totalPrice * TAX_RATE;
   const grandTotal = totalPrice + taxAmount;
@@ -19,7 +26,11 @@ const Cart = () => {
       <div className="cart-page">
         <div className="cart-empty">
           <div className="cart-empty__icon">
-            <Icon icon={FiShoppingBag} size="3.5rem" color="var(--color-text-muted)" />
+            <Icon
+              icon={FiShoppingBag}
+              size="3.5rem"
+              color="var(--color-text-muted)"
+            />
           </div>
           <h2 className="cart-empty__title">Your cart is empty</h2>
           <p className="cart-empty__text">
@@ -59,19 +70,21 @@ const Cart = () => {
       </div>
 
       <div className="cart-receipt">
-        {/* Receipt top edge */}
         <div className="cart-receipt__edge cart-receipt__edge--top" />
 
         <div className="cart-receipt__body">
-          {/* Receipt Header */}
           <div className="cart-receipt__header">
-            <Icon src="/assets/logo.png" size="10rem" color="var(--color-text-dark)" className="cart-receipt-logo" />
+            <Icon
+              src="/assets/logo.png"
+              size="10rem"
+              color="var(--color-text-dark)"
+              className="cart-receipt-logo"
+            />
             <span className="cart-receipt__date">{currentDate}</span>
             <span className="cart-receipt__time">{currentTime}</span>
             <div className="cart-receipt__separator" />
           </div>
 
-          {/* Column Headers */}
           <div className="cart-receipt__columns">
             <span className="cart-receipt__col-item">Item</span>
             <span className="cart-receipt__col-qty">Qty</span>
@@ -79,7 +92,6 @@ const Cart = () => {
           </div>
           <div className="cart-receipt__separator" />
 
-          {/* Items */}
           <ul className="cart-receipt__items">
             {items.map((item, index) => (
               <li key={item.product.id} className="cart-receipt__item">
@@ -99,16 +111,22 @@ const Cart = () => {
                   <div className="cart-receipt__qty-control">
                     <button
                       className="cart-receipt__qty-btn"
-                      onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                      onClick={() =>
+                        updateQuantity(item.product.id, item.quantity - 1)
+                      }
                       aria-label="Decrease quantity"
                       type="button"
                     >
                       <Icon icon={FiMinus} size="0.75rem" />
                     </button>
-                    <span className="cart-receipt__qty-value">{item.quantity}</span>
+                    <span className="cart-receipt__qty-value">
+                      {item.quantity}
+                    </span>
                     <button
                       className="cart-receipt__qty-btn"
-                      onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                      onClick={() =>
+                        updateQuantity(item.product.id, item.quantity + 1)
+                      }
                       disabled={
                         item.product.offerLimit !== undefined &&
                         item.quantity >= item.product.offerLimit
@@ -168,7 +186,9 @@ const Cart = () => {
           <div className="cart-receipt__separator" />
 
           <div className="cart-receipt__footer">
-            <span className="cart-receipt__thank-you">Thank you for shopping with us!</span>
+            <span className="cart-receipt__thank-you">
+              Thank you for shopping with us!
+            </span>
           </div>
         </div>
 
@@ -186,7 +206,11 @@ const Cart = () => {
           Clear Cart
         </Button>
         <Link to="/checkout" className="cart-page__checkout-link">
-          <Button variant="primary" size="md" className="cart-page__checkout-btn">
+          <Button
+            variant="primary"
+            size="md"
+            className="cart-page__checkout-btn"
+          >
             Proceed to Checkout — ${grandTotal.toFixed(2)}
           </Button>
         </Link>

@@ -10,6 +10,7 @@ import HeroCarousel from "../components/molecules/HeroCarousel";
 import ShopByCategories from "../components/organisms/ShopByCategories/ShopByCategories";
 import ProductListsSection from "../components/organisms/ProductListsSection/ProductListsSection";
 import { products } from "../data/products";
+import { categoryIcons } from "../data/categories";
 import {
     dealsOfTheDay,
     ctaCards,
@@ -22,19 +23,6 @@ import NewsletterBanner from "../components/organisms/NewsletterBanner";
 function Home() {
     const navigate = useNavigate();
     const { addToCart } = useCart();
-
-    const categoryIcons: Record<string, string> = {
-        "dairy-eggs": "/assets/categories/dairyCategory.png",
-        clothing: "/assets/categories/clothingCategory.png",
-        "pet-foods": "/assets/categories/petfoodCategory.png",
-        "baking-material": "/assets/categories/bakingCategory.png",
-        "fresh-fruit": "/assets/categories/fruitCategory.png",
-        beverages: "/assets/categories/winesAlcohol.png",
-        snacks: "/assets/categories/packagedFastFood.png",
-        "frozen-foods": "/assets/categories/freshFruit.png",
-        bakery: "/assets/categories/bakedCategory.png",
-        "meats-seafood": "/assets/categories/freshFruit.png",
-    };
 
     const dynamicCategories = Array.from(
         new Map(products.map((p) => [p.category.value, p.category])).values(),

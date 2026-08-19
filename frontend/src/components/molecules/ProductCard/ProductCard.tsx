@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import Badge from "../../atoms/Badge";
@@ -7,6 +8,7 @@ import Icon from "../../atoms/Icon";
 import "./ProductCard.css";
 
 export interface ProductCardProps {
+  id?: string;
   image: string;
   title: string;
   category: string;
@@ -21,6 +23,7 @@ export interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   image,
   title,
   category,
@@ -33,6 +36,8 @@ const ProductCard = ({
   onAdd,
   className = "",
 }: ProductCardProps) => {
+  const productLink = id ? `/product?id=${id}` : undefined;
+
   return (
     <article className={`product-card ${className}`.trim()}>
       {badgeText && (
@@ -41,16 +46,35 @@ const ProductCard = ({
         </div>
       )}
       <div className="product-card-image-wrapper">
-        <img
-          className="product-card-image"
-          src={image}
-          alt={title}
-          loading="lazy"
-        />
+        {productLink ? (
+          <Link to={productLink} className="product-card-image-link">
+            <img
+              className="product-card-image"
+              src={image}
+              alt={title}
+              loading="lazy"
+            />
+          </Link>
+        ) : (
+          <img
+            className="product-card-image"
+            src={image}
+            alt={title}
+            loading="lazy"
+          />
+        )}
       </div>
       <div className="product-card-body">
         <span className="product-card-category"> {category} </span>
-        <h3 className="product-card-title"> {title} </h3>
+        <h3 className="product-card-title">
+          {productLink ? (
+            <Link to={productLink} className="product-card-title-link">
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
+        </h3>
 
         {rating !== undefined && (
           <div className="product-card-rating">

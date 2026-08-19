@@ -10,6 +10,8 @@ import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
+import Product from "./pages/Product";
+import Shop from "./pages/Shop";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -22,6 +24,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/shop" element={<Shop />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

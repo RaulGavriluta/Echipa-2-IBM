@@ -39,7 +39,8 @@ interface PaymentForm {
 
 const TAX_RATE = Number(import.meta.env.VITE_TAX_RATE) || 0.08;
 const SHIPPING_COST = Number(import.meta.env.VITE_SHIPPING_COST) || 5.99;
-const FREE_SHIPPING_THRESHOLD = Number(import.meta.env.VITE_FREE_SHIPPING_THRESHOLD) || 50;
+const FREE_SHIPPING_THRESHOLD =
+  Number(import.meta.env.VITE_FREE_SHIPPING_THRESHOLD) || 50;
 
 const generateOrderNumber = () => {
   return `ECO-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
@@ -71,7 +72,8 @@ const Checkout = () => {
     cvv: "",
   });
 
-  const shippingCost = totalPrice >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+  const shippingCost =
+    totalPrice >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const taxAmount = totalPrice * TAX_RATE;
   const grandTotal = totalPrice + taxAmount + shippingCost;
 
@@ -125,7 +127,11 @@ const Checkout = () => {
       <div className="checkout-page">
         <div className="checkout-empty">
           <div className="checkout-empty__icon">
-            <Icon icon={FiShoppingBag} size="3.5rem" color="var(--color-text-muted)" />
+            <Icon
+              icon={FiShoppingBag}
+              size="3.5rem"
+              color="var(--color-text-muted)"
+            />
           </div>
           <h2 className="checkout-empty__title">Nothing to checkout</h2>
           <p className="checkout-empty__text">
@@ -152,7 +158,6 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page">
-      {/* Step Indicator */}
       <div className="checkout-steps">
         {steps.map((s, i) => (
           <div
@@ -161,9 +166,21 @@ const Checkout = () => {
           >
             <div className="checkout-step__circle">
               {i < currentStepIndex ? (
-                <Icon icon={FiCheck} size="0.875rem" color="var(--color-white)" />
+                <Icon
+                  icon={FiCheck}
+                  size="0.875rem"
+                  color="var(--color-white)"
+                />
               ) : (
-                <Icon icon={s.icon} size="0.875rem" color={i <= currentStepIndex ? "var(--color-white)" : "var(--color-text-muted)"} />
+                <Icon
+                  icon={s.icon}
+                  size="0.875rem"
+                  color={
+                    i <= currentStepIndex
+                      ? "var(--color-white)"
+                      : "var(--color-text-muted)"
+                  }
+                />
               )}
             </div>
             <span className="checkout-step__label">{s.label}</span>
@@ -174,35 +191,49 @@ const Checkout = () => {
 
       {step !== "confirmation" && (
         <div className="checkout-layout">
-          {/* Left: Form */}
           <div className="checkout-form-area">
             {step === "shipping" && (
               <div className="checkout-card">
                 <div className="checkout-card__header">
-                  <Icon icon={FiMapPin} size="1.25rem" color="var(--color-green)" />
+                  <Icon
+                    icon={FiMapPin}
+                    size="1.25rem"
+                    color="var(--color-green)"
+                  />
                   <h2 className="checkout-card__title">Shipping Information</h2>
                 </div>
 
                 <div className="checkout-form">
                   <div className="checkout-form__row">
                     <div className="checkout-form__group">
-                      <label className="checkout-form__label">First Name *</label>
+                      <label className="checkout-form__label">
+                        First Name *
+                      </label>
                       <input
                         type="text"
                         className="checkout-form__input"
                         placeholder="John"
                         value={shipping.firstName}
-                        onChange={(e) => setShipping({ ...shipping, firstName: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({
+                            ...shipping,
+                            firstName: e.target.value,
+                          })
+                        }
                       />
                     </div>
                     <div className="checkout-form__group">
-                      <label className="checkout-form__label">Last Name *</label>
+                      <label className="checkout-form__label">
+                        Last Name *
+                      </label>
                       <input
                         type="text"
                         className="checkout-form__input"
                         placeholder="Doe"
                         value={shipping.lastName}
-                        onChange={(e) => setShipping({ ...shipping, lastName: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({ ...shipping, lastName: e.target.value })
+                        }
                       />
                     </div>
                   </div>
@@ -215,7 +246,9 @@ const Checkout = () => {
                         className="checkout-form__input"
                         placeholder="john@example.com"
                         value={shipping.email}
-                        onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({ ...shipping, email: e.target.value })
+                        }
                       />
                     </div>
                     <div className="checkout-form__group">
@@ -225,19 +258,25 @@ const Checkout = () => {
                         className="checkout-form__input"
                         placeholder="+1 (555) 000-0000"
                         value={shipping.phone}
-                        onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({ ...shipping, phone: e.target.value })
+                        }
                       />
                     </div>
                   </div>
 
                   <div className="checkout-form__group">
-                    <label className="checkout-form__label">Street Address *</label>
+                    <label className="checkout-form__label">
+                      Street Address *
+                    </label>
                     <input
                       type="text"
                       className="checkout-form__input"
                       placeholder="123 Main Street, Apt 4B"
                       value={shipping.address}
-                      onChange={(e) => setShipping({ ...shipping, address: e.target.value })}
+                      onChange={(e) =>
+                        setShipping({ ...shipping, address: e.target.value })
+                      }
                     />
                   </div>
 
@@ -249,7 +288,9 @@ const Checkout = () => {
                         className="checkout-form__input"
                         placeholder="New York"
                         value={shipping.city}
-                        onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({ ...shipping, city: e.target.value })
+                        }
                       />
                     </div>
                     <div className="checkout-form__group">
@@ -259,7 +300,9 @@ const Checkout = () => {
                         className="checkout-form__input"
                         placeholder="NY"
                         value={shipping.state}
-                        onChange={(e) => setShipping({ ...shipping, state: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({ ...shipping, state: e.target.value })
+                        }
                       />
                     </div>
                     <div className="checkout-form__group">
@@ -269,7 +312,9 @@ const Checkout = () => {
                         className="checkout-form__input"
                         placeholder="10001"
                         value={shipping.zip}
-                        onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
+                        onChange={(e) =>
+                          setShipping({ ...shipping, zip: e.target.value })
+                        }
                       />
                     </div>
                   </div>
@@ -279,7 +324,9 @@ const Checkout = () => {
                     <select
                       className="checkout-form__input checkout-form__select"
                       value={shipping.country}
-                      onChange={(e) => setShipping({ ...shipping, country: e.target.value })}
+                      onChange={(e) =>
+                        setShipping({ ...shipping, country: e.target.value })
+                      }
                     >
                       <option value="United States">United States</option>
                       <option value="Canada">Canada</option>
@@ -312,51 +359,73 @@ const Checkout = () => {
             {step === "payment" && (
               <div className="checkout-card">
                 <div className="checkout-card__header">
-                  <Icon icon={FiCreditCard} size="1.25rem" color="var(--color-green)" />
+                  <Icon
+                    icon={FiCreditCard}
+                    size="1.25rem"
+                    color="var(--color-green)"
+                  />
                   <h2 className="checkout-card__title">Payment Method</h2>
                 </div>
 
                 <div className="checkout-payment-badge">
-                  <Icon icon={FiLock} size="0.75rem" color="var(--color-green)" />
+                  <Icon
+                    icon={FiLock}
+                    size="0.75rem"
+                    color="var(--color-green)"
+                  />
                   <span>Secure SSL Encrypted Payment (Simulated)</span>
                 </div>
 
                 <div className="checkout-form">
                   <div className="checkout-form__group">
-                    <label className="checkout-form__label">Card Number *</label>
+                    <label className="checkout-form__label">
+                      Card Number *
+                    </label>
                     <input
                       type="text"
                       className="checkout-form__input checkout-form__input--card"
                       placeholder="0000 0000 0000 0000"
                       value={payment.cardNumber}
                       onChange={(e) =>
-                        setPayment({ ...payment, cardNumber: formatCardNumber(e.target.value) })
+                        setPayment({
+                          ...payment,
+                          cardNumber: formatCardNumber(e.target.value),
+                        })
                       }
                       maxLength={19}
                     />
                   </div>
 
                   <div className="checkout-form__group">
-                    <label className="checkout-form__label">Cardholder Name *</label>
+                    <label className="checkout-form__label">
+                      Cardholder Name *
+                    </label>
                     <input
                       type="text"
                       className="checkout-form__input"
                       placeholder="JOHN DOE"
                       value={payment.cardName}
-                      onChange={(e) => setPayment({ ...payment, cardName: e.target.value })}
+                      onChange={(e) =>
+                        setPayment({ ...payment, cardName: e.target.value })
+                      }
                     />
                   </div>
 
                   <div className="checkout-form__row">
                     <div className="checkout-form__group">
-                      <label className="checkout-form__label">Expiry Date *</label>
+                      <label className="checkout-form__label">
+                        Expiry Date *
+                      </label>
                       <input
                         type="text"
                         className="checkout-form__input"
                         placeholder="MM/YY"
                         value={payment.expiry}
                         onChange={(e) =>
-                          setPayment({ ...payment, expiry: formatExpiry(e.target.value) })
+                          setPayment({
+                            ...payment,
+                            expiry: formatExpiry(e.target.value),
+                          })
                         }
                         maxLength={5}
                       />
@@ -399,20 +468,29 @@ const Checkout = () => {
                     {isProcessing ? (
                       <span className="checkout-spinner" />
                     ) : (
-                      <Icon icon={FiLock} size="0.875rem" color="var(--color-white)" />
+                      <Icon
+                        icon={FiLock}
+                        size="0.875rem"
+                        color="var(--color-white)"
+                      />
                     )}
-                    {isProcessing ? "Processing..." : `Pay $${grandTotal.toFixed(2)}`}
+                    {isProcessing
+                      ? "Processing..."
+                      : `Pay $${grandTotal.toFixed(2)}`}
                   </Button>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Right: Order Summary */}
           <aside className="checkout-summary">
             <div className="checkout-card">
               <div className="checkout-card__header">
-                <Icon icon={FiPackage} size="1.25rem" color="var(--color-green)" />
+                <Icon
+                  icon={FiPackage}
+                  size="1.25rem"
+                  color="var(--color-green)"
+                />
                 <h3 className="checkout-card__title">Order Summary</h3>
               </div>
 
@@ -426,7 +504,9 @@ const Checkout = () => {
                       isOffer={item.product.isOffer}
                       variant="compact"
                     />
-                    <span className="checkout-summary__qty">×{item.quantity}</span>
+                    <span className="checkout-summary__qty">
+                      ×{item.quantity}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -440,8 +520,14 @@ const Checkout = () => {
                 </div>
                 <div className="checkout-summary__row">
                   <span>Shipping</span>
-                  <span className={shippingCost === 0 ? "checkout-summary__free" : ""}>
-                    {shippingCost === 0 ? "FREE" : `$${shippingCost.toFixed(2)}`}
+                  <span
+                    className={
+                      shippingCost === 0 ? "checkout-summary__free" : ""
+                    }
+                  >
+                    {shippingCost === 0
+                      ? "FREE"
+                      : `$${shippingCost.toFixed(2)}`}
                   </span>
                 </div>
                 <div className="checkout-summary__row">
@@ -457,10 +543,17 @@ const Checkout = () => {
 
               {totalPrice < FREE_SHIPPING_THRESHOLD && (
                 <div className="checkout-summary__shipping-note">
-                  <Icon icon={FiTruck} size="0.875rem" color="var(--color-green)" />
+                  <Icon
+                    icon={FiTruck}
+                    size="0.875rem"
+                    color="var(--color-green)"
+                  />
                   <span>
-                    Add <strong>${(FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2)}</strong> more
-                    for free shipping!
+                    Add{" "}
+                    <strong>
+                      ${(FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2)}
+                    </strong>{" "}
+                    more for free shipping!
                   </span>
                 </div>
               )}
@@ -469,7 +562,6 @@ const Checkout = () => {
         </div>
       )}
 
-      {/* Confirmation */}
       {step === "confirmation" && (
         <div className="checkout-confirmation">
           <div className="checkout-confirmation__icon">
@@ -477,13 +569,16 @@ const Checkout = () => {
           </div>
           <h2 className="checkout-confirmation__title">Order Confirmed!</h2>
           <p className="checkout-confirmation__text">
-            Thank you for your purchase. Your order has been placed successfully.
+            Thank you for your purchase. Your order has been placed
+            successfully.
           </p>
 
           <div className="checkout-confirmation__details">
             <div className="checkout-confirmation__detail">
               <span className="checkout-confirmation__label">Order Number</span>
-              <span className="checkout-confirmation__value">{orderNumber}</span>
+              <span className="checkout-confirmation__value">
+                {orderNumber}
+              </span>
             </div>
             <div className="checkout-confirmation__detail">
               <span className="checkout-confirmation__label">Total Paid</span>
@@ -498,9 +593,13 @@ const Checkout = () => {
               </span>
             </div>
             <div className="checkout-confirmation__detail">
-              <span className="checkout-confirmation__label">Estimated Delivery</span>
+              <span className="checkout-confirmation__label">
+                Estimated Delivery
+              </span>
               <span className="checkout-confirmation__value">
-                {new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", {
+                {new Date(
+                  Date.now() + 5 * 24 * 60 * 60 * 1000,
+                ).toLocaleDateString("en-US", {
                   weekday: "long",
                   month: "long",
                   day: "numeric",
@@ -510,11 +609,7 @@ const Checkout = () => {
           </div>
 
           <div className="checkout-confirmation__actions">
-            <Button
-              variant="primary"
-              size="md"
-              onClick={() => navigate("/")}
-            >
+            <Button variant="primary" size="md" onClick={() => navigate("/")}>
               Continue Shopping
             </Button>
           </div>

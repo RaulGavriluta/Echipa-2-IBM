@@ -3,6 +3,7 @@ import NewsletterBanner from "../components/organisms/NewsletterBanner";
 export interface Category {
   label: string;
   value: string;
+  iconSrc?: string;
 }
 
 export interface ProductCategory {
@@ -11,6 +12,20 @@ export interface ProductCategory {
 }
 
 export type BadgeVariant = "hot" | "sale" | "new" | "discount";
+
+export interface SizeVariant {
+  label: string;
+  value: string;
+}
+
+export interface Review {
+  id: string;
+  author: string;
+  avatar?: string;
+  rating: number;
+  date: string;
+  text: string;
+}
 
 export interface Product {
   id: string;
@@ -25,10 +40,21 @@ export interface Product {
   badgeVariant?: BadgeVariant;
   salesCount?: number;
   viewsCount?: number;
-  createdAt?: string; 
+  createdAt?: string;
   description?: string;
+  shortDescription?: string;
+  sku?: string;
+  sizeVariants?: SizeVariant[];
+  tags?: string[];
+  stock?: number;
+  additionalInfo?: Record<string, string>;
+  reviews?: Review[];
+  galleryImages?: string[];
+  productType?: string;
+  mfgDate?: string;
+  lifespan?: string;
   color?: string;
-  condition?: string; 
+  condition?: string;
   isOffer?: boolean;
   offerLimit?: number;
   dealId?: string;

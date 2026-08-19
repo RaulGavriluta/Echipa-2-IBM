@@ -1,0 +1,234 @@
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.product-info__badge {
+  display: inline-flex;
+}
+
+.product-info__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.product-info__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-info__reviews-count {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.product-info__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.product-info__current-price {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.product-info__discount {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-badge-sale);
+  background: rgba(103, 188, 238, 0.12);
+  padding: 0.2rem 0.6rem;
+  border-radius: 1.25rem;
+}
+
+.product-info__old-price {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.product-info__short-desc {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 32.5rem;
+}
+
+.product-info__sizes {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.product-info__sizes-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  white-space: nowrap;
+}
+
+.product-info__sizes-options {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.product-info__size-btn {
+  padding: 0.4rem 0.85rem;
+  border: 1.5px solid var(--color-border-light);
+  border-radius: 0.375rem;
+  background: var(--color-white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.product-info__size-btn:hover {
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+
+.product-info__size-btn--active {
+  background: var(--color-green);
+  border-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.product-info__size-btn--active:hover {
+  background: var(--color-green-dark);
+  color: var(--color-white);
+}
+
+.product-info__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+}
+
+.product-info__quantity {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-border-light);
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.product-info__qty-btn {
+  width: 2.25rem;
+  height: 2.5rem;
+  border: none;
+  background: var(--color-white);
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.product-info__qty-btn:hover {
+  background: var(--color-green-soft);
+}
+
+.product-info__qty-value {
+  width: 2.25rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  border-left: 1px solid var(--color-border-light);
+  border-right: 1px solid var(--color-border-light);
+  line-height: 2.5rem;
+}
+
+.product-info__add-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem !important;
+  font-weight: 600;
+}
+
+.product-info__icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1.5px solid var(--color-border-light);
+  border-radius: 0.375rem;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.product-info__icon-btn:hover {
+  border-color: var(--color-green);
+  color: var(--color-green);
+  background: var(--color-green-soft);
+}
+
+.product-info__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.product-info__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.825rem;
+}
+
+.product-info__meta-label {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.product-info__meta-value {
+  color: var(--color-text-dark);
+  font-weight: 500;
+}
+
+.product-info__meta-value--green {
+  color: var(--color-green);
+}
+
+@media (max-width: 480px) {
+  .product-info__title {
+    font-size: 1.35rem;
+  }
+
+  .product-info__current-price {
+    font-size: 1.75rem;
+  }
+
+  .product-info__actions {
+    gap: 0.5rem;
+  }
+
+  .product-info__meta {
+    gap: 0.4rem 1.25rem;
+  }
+}

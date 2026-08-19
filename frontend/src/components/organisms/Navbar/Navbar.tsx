@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import clsx from "clsx";
 import {
   FiRepeat,
   FiHeart,
@@ -20,6 +21,7 @@ import CartHoverCard from "../../molecules/CartHoverCard/CartHoverCard";
 import Icon from "../../atoms/Icon";
 import Badge from "../../atoms/Badge";
 import navbarData from "../../../data/navbar";
+import categories from "../../../data/categories";
 import { useCart } from "../../../context/CartContext";
 import "./Navbar.css";
 
@@ -32,18 +34,40 @@ const iconMap: Record<string, IconType> = {
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isBrowseOpen, setIsBrowseOpen] = useState(false);
+  const browseRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
   const { header, mainNav, bottomNav } = navbarData;
   const { totalItems } = useCart();
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (browseRef.current && !browseRef.current.contains(e.target as Node)) {
+        setIsBrowseOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleCategoryClick = (categoryValue: string) => {
+    setIsBrowseOpen(false);
+    if (categoryValue === "all") {
+      navigate("/shop");
+    } else {
+      navigate(`/shop?category=${categoryValue}`);
+    }
+  };
+
   const renderAction = (action: (typeof mainNav.actions)[number], opts?: { hideLabel?: boolean; size?: string }) => {
     const isCart = action.icon === "FiShoppingCart";
     const count = isCart ? totalItems : action.count;
 
     if (isCart && !opts?.hideLabel) {
-      // Desktop: wrap cart in hover container
       return (
         <div key={action.label} className="cart-hover-wrapper">
           <HeaderAction
@@ -163,11 +187,52 @@ const Navbar = () => {
 
       <div className="navbar-bottom">
         <div className="navbar-bottom__inner">
-          <Button variant="primary" size="sm" className="navbar-bottom__browse">
-            <Icon icon={FiMenu} size="1rem" color="var(--color-white)" />
-            {bottomNav.browseLabel}
-            <Icon icon={FiChevronDown} size="0.6rem" color="var(--color-white)" />
-          </Button>
+          <div className="navbar-bottom__browse-container" ref={browseRef}>
+            <Button
+              variant="primary"
+              size="sm"
+              className="navbar-bottom__browse"
+              onClick={() => setIsBrowseOpen((prev) => !prev)}
+              type="button"
+              aria-expanded={isBrowseOpen}
+            >
+              <Icon icon={FiMenu} size="1rem" color="var(--color-white)" />
+              {bottomNav.browseLabel}
+              <Icon
+                icon={FiChevronDown}
+                size="0.6rem"
+                color="var(--color-white)"
+                className={clsx(
+                  "navbar-bottom__browse-arrow",
+                  isBrowseOpen && "navbar-bottom__browse-arrow--open"
+                )}
+              />
+            </Button>
+
+            {isBrowseOpen && (
+              <div className="navbar-browse__dropdown">
+                <div className="navbar-browse__grid">
+                  {categories.map((cat) => (
+                    <button
+                      key={`navbar-browse-cat-${cat.value}`}
+                      type="button"
+                      className="navbar-browse__item"
+                      onClick={() => handleCategoryClick(cat.value)}
+                    >
+                      {cat.iconSrc && (
+                        <img
+                          src={cat.iconSrc}
+                          alt={cat.label}
+                          className="navbar-browse__item-icon"
+                        />
+                      )}
+                      <span className="navbar-browse__item-label">{cat.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           <ul className="navbar-bottom__links">
             {bottomNav.links.map((link) => (
