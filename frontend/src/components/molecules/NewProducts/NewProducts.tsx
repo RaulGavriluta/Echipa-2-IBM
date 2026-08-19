@@ -10,7 +10,7 @@ export interface NewProductsProps {
 
 const NewProducts = ({
   title = "New products",
-  products,
+  products = [],
   className = "",
 }: NewProductsProps) => {
   return (
