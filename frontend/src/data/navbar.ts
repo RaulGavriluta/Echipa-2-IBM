@@ -23,7 +23,7 @@ const navbarData: NavbarData = {
     actions: [
       { label: "Compare", href: "#", icon: "FiRepeat" },
       { label: "Wishlist", href: "#", icon: "FiHeart", count: 4 },
-      { label: "Cart", href: "#", icon: "FiShoppingCart", count: 2 },
+      { label: "Cart", href: "/cart", icon: "FiShoppingCart" },
       { label: "Account", href: "#", icon: "FiUser" },
     ],
   },

@@ -29,6 +29,14 @@ export interface Product {
   description?: string;
   color?: string;
   condition?: string; 
+  isOffer?: boolean;
+  offerLimit?: number;
+  dealId?: string;
+}
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
 }
 
 export interface FooterLink {
@@ -194,13 +202,10 @@ export interface ContactLocationItem {
 
 export interface DealProduct {
   id: string;
-  title: string;
-  image: string;
-  currentPrice: number;
-  oldPrice?: number;
-  rating?: number;
-  seller?: string;
+  product: Product;
+  discountPrice: number;
   deadline: string;
+  limit: number;
 }
 
 export interface CtaCardData {

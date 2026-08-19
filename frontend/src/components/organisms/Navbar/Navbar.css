@@ -102,6 +102,11 @@
   gap: 1.25rem;
 }
 
+.cart-hover-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
 .navbar-hamburger {
   display: none;
   background: none;

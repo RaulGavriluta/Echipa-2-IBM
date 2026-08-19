@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   FiRepeat,
   FiHeart,
@@ -15,8 +16,11 @@ import Logo from "../../atoms/Logo";
 import SearchBar from "../../atoms/SearchBar";
 import Button from "../../atoms/Button";
 import HeaderAction from "../../molecules/HeaderAction/HeaderAction";
+import CartHoverCard from "../../molecules/CartHoverCard/CartHoverCard";
 import Icon from "../../atoms/Icon";
+import Badge from "../../atoms/Badge";
 import navbarData from "../../../data/navbar";
+import { useCart } from "../../../context/CartContext";
 import "./Navbar.css";
 
 const iconMap: Record<string, IconType> = {
@@ -29,9 +33,43 @@ const iconMap: Record<string, IconType> = {
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { header, mainNav, bottomNav } = navbarData;
+  const { totalItems } = useCart();
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const renderAction = (action: (typeof mainNav.actions)[number], opts?: { hideLabel?: boolean; size?: string }) => {
+    const isCart = action.icon === "FiShoppingCart";
+    const count = isCart ? totalItems : action.count;
+
+    if (isCart && !opts?.hideLabel) {
+      // Desktop: wrap cart in hover container
+      return (
+        <div key={action.label} className="cart-hover-wrapper">
+          <HeaderAction
+            icon={iconMap[action.icon]}
+            label={opts?.hideLabel ? "" : action.label}
+            count={count}
+            to={action.href}
+            size={opts?.size}
+          />
+          <CartHoverCard />
+        </div>
+      );
+    }
+
+    return (
+      <HeaderAction
+        key={action.label}
+        icon={iconMap[action.icon]}
+        label={opts?.hideLabel ? "" : action.label}
+        count={count}
+        href={isCart ? undefined : action.href}
+        to={isCart ? action.href : undefined}
+        size={opts?.size}
+      />
+    );
+  };
 
   return (
     <nav className="navbar">
@@ -60,8 +98,8 @@ const Navbar = () => {
               ))}
             </select>
             <select className="navbar-top__select" defaultValue={header.currencies[0]}>
-              {header.currencies.map((cur) => (
-                <option key={cur} value={cur}>{cur}</option>
+              {header.currencies.map((curr) => (
+                <option key={curr} value={curr}>{curr}</option>
               ))}
             </select>
           </div>
@@ -93,31 +131,31 @@ const Navbar = () => {
           </Button>
 
           <div className="navbar-main__actions">
-            {mainNav.actions.map((action) => (
-              <HeaderAction
-                key={action.label}
-                icon={iconMap[action.icon]}
-                label={action.label}
-                count={action.count}
-                href={action.href}
-              />
-            ))}
+            {mainNav.actions.map((action) => renderAction(action))}
           </div>
 
        
           <div className="navbar-main__actions-mobile">
             {mainNav.actions
               .filter((a) => a.icon === "FiHeart" || a.icon === "FiShoppingCart")
-              .map((action) => (
-                <HeaderAction
-                  key={action.label}
-                  icon={iconMap[action.icon]}
-                  count={action.count}
-                  label=""
-                  href={action.href}
-                  size="1.4rem"
-                />
-              ))}
+              .map((action) => {
+                const isCart = action.icon === "FiShoppingCart";
+                const count = isCart ? totalItems : action.count;
+                return (
+                  <Link
+                    key={action.label}
+                    to={isCart ? "/cart" : action.href}
+                    className="header-action"
+                  >
+                    <div className="header-action__icon-wrapper">
+                      <Icon icon={iconMap[action.icon]} size="1.4rem" />
+                      {count !== undefined && count > 0 && (
+                        <Badge variant="notification">{count}</Badge>
+                      )}
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -194,15 +232,21 @@ const Navbar = () => {
         </ul>
 
         <div className="navbar-mobile-drawer__actions">
-          {mainNav.actions.map((action) => (
-            <HeaderAction
-              key={action.label}
-              icon={iconMap[action.icon]}
-              label={action.label}
-              count={action.count}
-              href={action.href}
-            />
-          ))}
+          {mainNav.actions.map((action) => {
+            const isCart = action.icon === "FiShoppingCart";
+            const count = isCart ? totalItems : action.count;
+            return (
+              <HeaderAction
+                key={action.label}
+                icon={iconMap[action.icon]}
+                label={action.label}
+                count={count}
+                to={isCart ? "/cart" : undefined}
+                href={isCart ? undefined : action.href}
+                onClick={closeMobileMenu}
+              />
+            );
+          })}
         </div>
 
         <div className="navbar-mobile-drawer__footer">

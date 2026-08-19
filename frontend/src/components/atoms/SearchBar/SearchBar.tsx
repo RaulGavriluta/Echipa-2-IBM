@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 import Icon from "../../../components/atoms/Icon";
 import { FaMagnifyingGlass, FaChevronDown } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import categories from "../../../data/categories";
 import "./SearchBar.css";
 
@@ -16,6 +17,7 @@ const SearchBar = ({
   placeholder = "Search for items...",
   className,
 }: SearchBarProps) => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +38,16 @@ const SearchBar = ({
 
   const handleSearch = () => {
     onSearch?.(query, selectedCategory.value);
-  };
+    const params = new URLSearchParams();
+  if (selectedCategory.value && selectedCategory.value !== "all") {
+    params.append("category", selectedCategory.value);
+  }
+  if (query.trim()) {
+    params.append("search", query.trim());
+  }
+  navigate(`/shop?${params.toString()}`);
+};
+
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") handleSearch();
@@ -50,7 +61,7 @@ const SearchBar = ({
           onClick={() => setIsOpen(!isOpen)}
           type="button"
         >
-          {selectedCategory.label}
+          <span>{selectedCategory.label}</span>
           <Icon
             icon={FaChevronDown}
             size="0.625rem"

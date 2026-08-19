@@ -1,0 +1,208 @@
+.cart-hover-card {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  width: 22rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 2rem rgba(31, 51, 71, 0.12);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.cart-hover-wrapper:hover .cart-hover-card,
+.cart-hover-card:hover {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cart-hover-card::before {
+  content: "";
+  position: absolute;
+  top: -0.75rem;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
+}
+
+.cart-hover-card__header {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.cart-hover-card__title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.cart-hover-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 18rem;
+  overflow-y: auto;
+}
+
+.cart-hover-card__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cart-hover-card__list::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+  border-radius: 2px;
+}
+
+.cart-hover-card__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px dashed var(--color-border-light);
+  transition: background-color 0.15s ease;
+}
+
+.cart-hover-card__item:last-child {
+  border-bottom: none;
+}
+
+.cart-hover-card__item:hover {
+  background-color: var(--color-bg-hover-subtle);
+}
+
+.cart-hover-card__item .product-mini-card {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-hover-card__item .product-mini-card__image-wrapper {
+  width: 3rem;
+  height: 3rem;
+}
+
+.cart-hover-card__item .product-mini-card__title {
+  font-size: var(--font-size-xs) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 10rem;
+  display: block;
+}
+
+.cart-hover-card__item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.cart-hover-card__qty {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-green);
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.cart-hover-card__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  border-radius: 50%;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.cart-hover-card__remove:hover {
+  color: var(--color-badge-hot);
+  background-color: rgba(247, 75, 129, 0.08);
+}
+
+.cart-hover-card__more {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Footer */
+.cart-hover-card__footer {
+  padding: 0.875rem 1rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.cart-hover-card__subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dark);
+}
+
+.cart-hover-card__subtotal strong {
+  color: var(--color-green);
+  font-size: var(--font-size-base);
+}
+
+.cart-hover-card__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cart-hover-card__view-btn {
+  flex: 1;
+  text-decoration: none;
+}
+
+.cart-hover-card__actions .button {
+  flex: 1;
+}
+
+.cart-hover-card__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+}
+
+.cart-hover-card__empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.cart-hover-card__empty-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-green);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cart-hover-card__empty-link:hover {
+  color: var(--color-green-dark);
+}
+
+@media (max-width: 480px) {
+  .cart-hover-card {
+    display: none !important;
+  }
+}

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import ProductCard from "../../molecules/ProductCard";
 import { products } from "../../../data/products";
+import { useCart } from "../../../context/CartContext";
 import "./PopularProducts.css";
 
 const PopularProducts = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const { addToCart } = useCart();
 
   const categories = [
     { label: "All", value: "all" },
@@ -63,6 +65,7 @@ const PopularProducts = () => {
             seller={product.seller}
             badgeText={product.badgeText}
             badgeVariant={product.badgeVariant}
+            onAdd={() => addToCart(product)}
           />
         ))}
       </div>
@@ -71,3 +74,4 @@ const PopularProducts = () => {
 };
 
 export default PopularProducts;
+

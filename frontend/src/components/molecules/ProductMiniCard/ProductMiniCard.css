@@ -51,6 +51,21 @@
   color: var(--color-green);
 }
 
+.product-mini-card__offer-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--color-badge-hot);
+  color: var(--color-white);
+  border-radius: 0.25rem;
+  margin-left: 0.375rem;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
 .product-mini-card__rating {
   display: flex;
   align-items: center;

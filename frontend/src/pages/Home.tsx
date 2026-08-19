@@ -15,10 +15,13 @@ import {
     ctaCards,
     newsletterBanner,
 } from "../data/homePageData";
+import { getDealProduct } from "../data/deals";
+import { useCart } from "../context/CartContext";
 import NewsletterBanner from "../components/organisms/NewsletterBanner";
 
 function Home() {
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     const categoryIcons: Record<string, string> = {
         "dairy-eggs": "/assets/categories/dairyCategory.png",
@@ -142,18 +145,22 @@ function Home() {
                             </a>
                         </div>
                         <div className="home-deals-grid">
-                            {dealsOfTheDay.map((deal) => (
-                                <OfferCard
-                                    key={deal.id}
-                                    image={deal.image}
-                                    title={deal.title}
-                                    currentPrice={deal.currentPrice}
-                                    oldPrice={deal.oldPrice}
-                                    rating={deal.rating}
-                                    seller={deal.seller ?? ""}
-                                    deadline={new Date(deal.deadline)}
-                                />
-                            ))}
+                            {dealsOfTheDay.map((deal) => {
+                                const dealProduct = getDealProduct(deal);
+                                return (
+                                    <OfferCard
+                                        key={deal.id}
+                                        image={dealProduct.image}
+                                        title={dealProduct.title}
+                                        currentPrice={dealProduct.currentPrice}
+                                        oldPrice={dealProduct.oldPrice}
+                                        rating={dealProduct.rating}
+                                        seller={dealProduct.seller ?? ""}
+                                        deadline={new Date(deal.deadline)}
+                                        onAdd={() => addToCart(dealProduct)}
+                                    />
+                                );
+                            })}
                         </div>
                     </div>
 

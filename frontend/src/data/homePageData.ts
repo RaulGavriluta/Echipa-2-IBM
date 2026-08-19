@@ -1,7 +1,5 @@
 import type {
-  DealProduct,
   CtaCardData,
-  NewProduct,
   ShopCategory,
   NewsletterBanner,
 } from "./types";
@@ -57,70 +55,7 @@ export const shopCategories: ShopCategory[] = [
   },
 ];
 
-export const newProducts: NewProduct[] = [
-  {
-    id: "new-1",
-    title: "Chen Cardigan",
-    imageSrc: "/assets/products/chen-cardigan.png",
-    price: 99.5,
-  },
-  {
-    id: "new-2",
-    title: "Chen Sweater",
-    imageSrc: "/assets/products/chen-sweater.png",
-    price: 89.5,
-  },
-  {
-    id: "new-3",
-    title: "Colorful Jacket",
-    imageSrc: "/assets/products/colorful-jacket.png",
-    price: 25,
-  },
-];
-
-export const dealsOfTheDay: DealProduct[] = [
-  {
-    id: "deal-1",
-    title: "Seeds of Change Organic Quinoa, Brown",
-    image: "/assets/offers/offer1.png",
-    currentPrice: 32.85,
-    oldPrice: 33.8,
-    rating: 4.0,
-    seller: "NestFood",
-    deadline: "2027-01-15T00:00:00",
-  },
-  {
-    id: "deal-2",
-    title: "Perdue Simply Smart Organics Gluten",
-    image: "/assets/offers/offer2.png",
-    currentPrice: 24.85,
-    oldPrice: 26.8,
-    rating: 4.0,
-    seller: "Old El Paso",
-    deadline: "2027-04-20T00:00:00",
-  },
-  {
-    id: "deal-3",
-    title: "Signature Wood-Fired Mushroom",
-    image: "/assets/offers/offer3.png",
-    currentPrice: 12.85,
-    oldPrice: 15.8,
-    rating: 3.0,
-    seller: "Progresso",
-    deadline: "2027-10-10T00:00:00",
-  },
-  {
-    id: "deal-4",
-    title: "Simply Lemonade with Raspberry Juice",
-    image: "/assets/offers/offer4.png",
-    currentPrice: 15.85,
-    oldPrice: 16.8,
-    rating: 3.0,
-    seller: "Yoplait",
-    deadline: "2027-06-01T00:00:00",
-  },
-];
-
+export { dealsOfTheDay, deals } from "./deals";
 export const ctaCards: CtaCardData[] = [
   {
     id: "cta-1",
