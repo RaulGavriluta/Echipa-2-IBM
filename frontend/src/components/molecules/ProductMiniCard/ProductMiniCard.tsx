@@ -9,6 +9,7 @@ export interface ProductMiniCardProps {
   price: number;
   oldPrice?: number;
   rating?: number;
+  isOffer?: boolean;
   variant?: "compact" | "detailed";
   to?: string;
   href?: string;
@@ -22,6 +23,7 @@ const ProductMiniCard: React.FC<ProductMiniCardProps> = ({
   price,
   oldPrice,
   rating = 4.0,
+  isOffer,
   variant = "compact",
   to,
   href,
@@ -92,7 +94,10 @@ const ProductMiniCard: React.FC<ProductMiniCardProps> = ({
       </div>
 
       <div className="product-mini-card__content">
-        <h4 className="product-mini-card__title">{title}</h4>
+        <h4 className="product-mini-card__title">
+          {title}
+          {isOffer && <span className="product-mini-card__offer-badge">Offer</span>}
+        </h4>
         {isDetailed ? (
           <>
             {renderRating()}

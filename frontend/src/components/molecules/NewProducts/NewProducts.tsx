@@ -1,5 +1,4 @@
 import ProductMiniCard from "../ProductMiniCard";
-import { newProducts } from "../../../data/homePageData";
 import "./NewProducts.css";
 
 export interface NewProductsProps {
@@ -10,7 +9,7 @@ export interface NewProductsProps {
 
 const NewProducts = ({
   title = "New products",
-  products = newProducts,
+  products,
   className = "",
 }: NewProductsProps) => {
   return (

@@ -37,6 +37,7 @@ const ProductListsSection = () => {
               price={product.currentPrice}
               oldPrice={product.oldPrice}
               rating={product.rating}
+              href={`/product?id=${product.id}`}
               variant="detailed"
             />
           ))}
@@ -55,6 +56,7 @@ const ProductListsSection = () => {
               price={product.currentPrice}
               oldPrice={product.oldPrice}
               rating={product.rating}
+              href={`/product?id=${product.id}`}
               variant="detailed"
             />
           ))}
@@ -73,6 +75,7 @@ const ProductListsSection = () => {
               price={product.currentPrice}
               oldPrice={product.oldPrice}
               rating={product.rating}
+              href={`/product?id=${product.id}`}
               variant="detailed"
             />
           ))}
@@ -91,6 +94,7 @@ const ProductListsSection = () => {
               price={product.currentPrice}
               oldPrice={product.oldPrice}
               rating={product.rating}
+              href={`/product?id=${product.id}`}
               variant="detailed"
             />
           ))}
