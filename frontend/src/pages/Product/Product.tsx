@@ -1,6 +1,7 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { products } from "../../data/products";
-import { colorOptions, conditionOptions } from "../../data/filterData";
+import { categoryIcons } from "../../data/categories";
+import Seo from "../../components/atoms/Seo/Seo";
 import Breadcrumb from "../../components/molecules/Breadcrumb";
 import ProductGallery from "../../components/molecules/ProductGallery";
 import ProductInfo from "../../components/molecules/ProductInfo";
@@ -23,13 +24,42 @@ const Product = () => {
       ? product.galleryImages
       : [product.image];
 
-  const newProductsList = products.slice(0, 3);
+  const dynamicCategories = Array.from(
+    new Map(products.map((p) => [p.category.value, p.category])).values(),
+  ).map((cat) => ({
+    id: cat.value,
+    label: cat.label,
+    iconSrc: categoryIcons[cat.value] || "/assets/categories/fruitCategory.png",
+    count: products.filter((p) => p.category.value === cat.value).length,
+  }));
+
+  const dynamicColors = [
+    { id: "red", label: "Red", count: products.filter((p) => p.color === "red").length },
+    { id: "green", label: "Green", count: products.filter((p) => p.color === "green").length },
+    { id: "blue", label: "Blue", count: products.filter((p) => p.color === "blue").length },
+  ];
+
+  const dynamicConditions = [
+    { id: "new", label: "New", count: products.filter((p) => p.condition === "new").length },
+    { id: "refurbished", label: "Refurbished", count: products.filter((p) => p.condition === "refurbished").length },
+    { id: "used", label: "Used", count: products.filter((p) => p.condition === "used").length },
+  ];
+
+  const newProductsList = [...products]
+    .filter((p) => p.createdAt !== undefined)
+    .sort((a, b) => new Date(b.createdAt || "").getTime() - new Date(a.createdAt || "").getTime())
+    .slice(0, 3);
 
   const handleSelectCategory = (categoryKey: string | null) => {
     if (categoryKey) {
       navigate(`/shop?category=${categoryKey}`);
     }
   };
+
+  const seoDescription = (() => {
+    const raw = product.shortDescription || product.description || "";
+    return raw.length > 160 ? raw.slice(0, 157) + "..." : raw;
+  })();
 
   const handlePriceFilterSubmit = (data: {
     minPrice: number;
@@ -51,6 +81,13 @@ const Product = () => {
 
   return (
     <div className="product-page-container">
+      <Seo
+        title={product.title}
+        description={seoDescription || undefined}
+        canonical={`/product?id=${product.id}`}
+        ogImage={product.image}
+        ogType="product"
+      />
       <div className="product-page-wrapper">
         <Breadcrumb
           items={[
@@ -85,12 +122,15 @@ const Product = () => {
           </div>
 
           <aside className="product-page-sidebar">
-            <CategoryFilter onSelectCategory={handleSelectCategory} />
+            <CategoryFilter
+              categories={dynamicCategories}
+              onSelectCategory={handleSelectCategory}
+            />
             <PriceFilter
               minPrice={0}
               maxPrice={150}
-              colors={colorOptions}
-              conditions={conditionOptions}
+              colors={dynamicColors}
+              conditions={dynamicConditions}
               onFilterSubmit={handlePriceFilterSubmit}
             />
             <NewProducts products={newProductsList} />

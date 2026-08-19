@@ -7,6 +7,7 @@ import {
   FiArrowLeft,
 } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
+import Seo from "../../components/atoms/Seo/Seo";
 import ProductMiniCard from "../../components/molecules/ProductMiniCard/ProductMiniCard";
 import Button from "../../components/atoms/Button";
 import Icon from "../../components/atoms/Icon";
@@ -61,6 +62,7 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
+      <Seo title="Shopping Cart" noIndex />
       <div className="cart-page__header">
         <Link to="/" className="cart-page__back">
           <Icon icon={FiArrowLeft} size="1rem" />

@@ -4,6 +4,9 @@ import { products } from "../../data/products";
 import categories from "../../data/categories";
 import { dealsOfTheDay, getDealProduct } from "../../data/deals";
 import OfferCard from "../../components/molecules/OfferCard/OfferCard";
+import NewsletterBanner from "../../components/organisms/NewsletterBanner";
+import { newsletterBanner } from "../../data/homePageData";
+import Seo from "../../components/atoms/Seo/Seo";
 import {
   DEFAULT_ITEMS_PER_PAGE,
   DEFAULT_SORT_BY,
@@ -129,9 +132,26 @@ const Shop = () => {
     [sortedProducts, currentPage, itemsPerPage],
   );
 
+  const seoTitle = searchParam
+    ? `Search: "${searchParam}"`
+    : categoryLabel && categoryLabel !== "Shop"
+    ? `${categoryLabel} – Shop`
+    : "Shop";
+
+  const seoDescription = searchParam
+    ? `Browse ${filteredProducts.length} results for "${searchParam}" at Nest.`
+    : categoryLabel && categoryLabel !== "Shop"
+    ? `Shop ${categoryLabel} products at Nest – fresh quality, great prices.`
+    : "Browse our full range of fresh groceries, dairy, bakery, beverages and more at Nest.";
+
   return (
     <div className="shop-page">
       <div className="shop-page__container">
+        <Seo
+          title={seoTitle}
+          description={seoDescription}
+          canonical={`/shop${categoryParam ? `?category=${categoryParam}` : ""}`}
+        />
         <ShopHero
           title={heroTitle}
           breadcrumbItems={breadcrumbItems}
@@ -208,6 +228,14 @@ const Shop = () => {
               );
             })}
           </div>
+        </div>
+        <div>
+          <NewsletterBanner
+            title={newsletterBanner.title}
+            subtitleHighlight={newsletterBanner.description}
+            backgroundImage={newsletterBanner.imageUrl}
+            sideImage={newsletterBanner.sideImage}
+          />
         </div>
       </div>
     </div>

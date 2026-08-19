@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import Seo from "../components/atoms/Seo/Seo";
 import PopularProducts from "../components/organisms/PopularProducts/PopularProducts";
 import CategoryFilter from "../components/molecules/CategoryFilter";
 import PriceFilter from "../components/organisms/PriceFilter";
@@ -105,6 +106,12 @@ function Home() {
 
     return (
         <div className="home-page-container">
+            <Seo
+                title="Fresh Groceries Online"
+                description="Shop fresh groceries, dairy, bakery, beverages and more at Nest. Quality products delivered to your door."
+                canonical="/"
+                ogImage={newsletterBanner.imageUrl}
+            />
             <section className="home-layout">
                 <aside className="home-sidebar">
                     <CategoryFilter
@@ -128,7 +135,7 @@ function Home() {
                     <div className="home-deals">
                         <div className="home-deals-header">
                             <h2 className="home-deals-title">Deals Of The Day</h2>
-                            <a href="#" className="home-deals-link">
+                            <a href="/deals" className="home-deals-link">
                                 All Deals &rsaquo;
                             </a>
                         </div>
@@ -173,7 +180,7 @@ function Home() {
                 <div className="home-product-metrics">
                     <ProductListsSection />
                 </div>
-                <div className="home-newsletter-banner">
+                <div>
                     <NewsletterBanner
                         title={newsletterBanner.title}
                         subtitleHighlight={newsletterBanner.description}

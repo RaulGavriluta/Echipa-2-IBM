@@ -1,4 +1,5 @@
 import React from "react";
+import Seo from "../../components/atoms/Seo/Seo";
 import FeatureCard from "../../components/molecules/FeatureCard";
 import TeamCard from "../../components/molecules/TeamCard";
 import Button from "../../components/atoms/Button";
@@ -16,6 +17,11 @@ import "./About.css";
 const About: React.FC = () => {
   return (
     <div className="about-page">
+      <Seo
+        title="About Us"
+        description="Learn about Nest – our mission, team and values. We bring fresh, quality groceries straight to your door."
+        canonical="/about"
+      />
       <div className="about-page__container">
         <section className="about-hero">
           <div className="about-hero__image-wrapper">

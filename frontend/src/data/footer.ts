@@ -18,11 +18,11 @@ export const footerData: FooterData = {
     {
       title: "Company",
       links: [
-        { label: "About Us", href: "#" },
+        { label: "About Us", href: "/about" },
         { label: "Delivery Information", href: "#" },
         { label: "Privacy Policy", href: "#" },
         { label: "Terms & Conditions", href: "#" },
-        { label: "Contact Us", href: "#" },
+        { label: "Contact Us", href: "/contact" },
         { label: "Support Center", href: "#" },
         { label: "Careers", href: "#" },
       ],
@@ -31,7 +31,7 @@ export const footerData: FooterData = {
       title: "Account",
       links: [
         { label: "Sign In", href: "#" },
-        { label: "View Cart", href: "#" },
+        { label: "View Cart", href: "/cart" },
         { label: "My Wishlist", href: "#" },
         { label: "Track My Order", href: "#" },
         { label: "Help Ticket", href: "#" },
@@ -48,7 +48,7 @@ export const footerData: FooterData = {
         { label: "Farm Careers", href: "#" },
         { label: "Our Suppliers", href: "#" },
         { label: "Accessibility", href: "#" },
-        { label: "Promotions", href: "#" },
+        { label: "Promotions", href: "/deals" },
       ],
     },
     {

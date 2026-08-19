@@ -11,6 +11,7 @@ import {
   FiShoppingBag,
 } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
+import Seo from "../../components/atoms/Seo/Seo";
 import ProductMiniCard from "../../components/molecules/ProductMiniCard/ProductMiniCard";
 import Button from "../../components/atoms/Button";
 import Icon from "../../components/atoms/Icon";
@@ -158,6 +159,7 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page">
+      <Seo title="Checkout" noIndex />
       <div className="checkout-steps">
         {steps.map((s, i) => (
           <div

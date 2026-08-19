@@ -31,13 +31,11 @@ const navbarData: NavbarData = {
     browseLabel: "Browse All Categories",
     links: [
       { label: "Deals", href: "#" },
-      { label: "Home", href: "/", hasDropdown: true },
+      { label: "Home", href: "/"},
       { label: "About", href: "/about" },
       { label: "Shop", href: "/shop", hasDropdown: true },
-      { label: "Vendors", href: "#", hasDropdown: true },
-      { label: "Mega menu", href: "#", hasDropdown: true },
+      { label: "Vendors", href: "/vendors", hasDropdown: true },
       { label: "Blog", href: "#", hasDropdown: true },
-      { label: "Pages", href: "#", hasDropdown: true },
       { label: "Contact", href: "/contact" },
     ],
     phone: {

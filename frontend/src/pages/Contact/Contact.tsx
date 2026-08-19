@@ -1,4 +1,5 @@
 import React from "react";
+import Seo from "../../components/atoms/Seo/Seo";
 import ContactLocationCard from "../../components/molecules/ContactLocationCard";
 import ContactForm from "../../components/organisms/ContactForm";
 import NewsletterBanner from "../../components/organisms/NewsletterBanner";
@@ -14,6 +15,11 @@ import "./Contact.css";
 const Contact: React.FC = () => {
   return (
     <div className="contact-page">
+      <Seo
+        title="Contact Us"
+        description="Get in touch with Nest. Find our locations, phone numbers and send us a message."
+        canonical="/contact"
+      />
       <div className="contact-page__container">
         <section className="contact-top">
           <div className="contact-top__intro">
