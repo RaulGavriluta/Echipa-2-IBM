@@ -1,19 +1,19 @@
 # NEST Mart & Groceries — Frontend
 
-> Aplicație web de tip e-commerce pentru produse alimentare, construită cu **React 19 + Vite + TypeScript**.
+> E-commerce web application for groceries, built with **React 19 + Vite + TypeScript**.
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# Instalare dependențe
+# Install dependencies
 bun install
 
-# Server de dezvoltare
+# Development server
 bun run dev        # http://localhost:5173
 
-# Build producție
+# Production build
 bun run build
 
 # Preview build
@@ -24,136 +24,136 @@ bun run preview
 
 ## 🏗️ Tech Stack
 
-| Tehnologie         | Versiune | Rol                            |
-| ------------------ | -------- | ------------------------------ |
-| React              | 19       | UI library                     |
-| TypeScript         | ~6.0     | Type safety                    |
-| Vite               | 8        | Build tool & dev server        |
-| React Router DOM   | 7        | Client-side routing (SPA)      |
-| react-helmet-async | 3        | SEO dinamic (title, meta, og)  |
-| react-icons        | 5        | Icon library (Feather Icons)   |
-| clsx               | 2        | Conditional CSS class utility  |
-| Vanilla CSS        | —        | Stilizare (fără framework CSS) |
+| Technology         | Version | Role                            |
+| ------------------ | ------- | ------------------------------- |
+| React              | 19      | UI library                      |
+| TypeScript         | ~6.0    | Type safety                     |
+| Vite               | 8       | Build tool & dev server         |
+| React Router DOM   | 7       | Client-side routing (SPA)       |
+| react-helmet-async | 3       | Dynamic SEO (title, meta, og)   |
+| react-icons        | 5       | Icon library (Feather Icons)    |
+| clsx               | 2       | Conditional CSS class utility   |
+| Vanilla CSS        | —       | Styling (no CSS framework)      |
 
 ---
 
-## 📁 Structura Proiectului
+## 📁 Project Structure
 
 ```
 frontend/
-├── index.html              # Entry HTML cu meta SEO fallback
+├── index.html              # Entry HTML with meta SEO fallback
 ├── src/
 │   ├── main.tsx            # Bootstrap React + Router + HelmetProvider
-│   ├── App.tsx             # (nefolosit direct — rutele sunt în main.tsx)
-│   ├── index.css           # CSS global
+│   ├── App.tsx             # (not used directly — routes are in main.tsx)
+│   ├── index.css           # Global CSS
 │   │
-│   ├── pages/              # Paginile aplicației
-│   │   ├── Home.tsx        # Pagina principală
-│   │   ├── Shop/           # Magazin cu filtre și paginare
-│   │   ├── Product/        # Pagina de produs individual
-│   │   ├── Cart/           # Coș de cumpărături
-│   │   ├── Checkout/       # Flux checkout (3 pași)
-│   │   ├── About/          # Despre noi
-│   │   ├── Contact/        # Contact
-│   │   └── NotFound.tsx    # Pagina 404
+│   ├── pages/              # Application pages
+│   │   ├── Home.tsx        # Home page
+│   │   ├── Shop/           # Shop page with filters and pagination
+│   │   ├── Product/        # Individual product page
+│   │   ├── Cart/           # Shopping cart
+│   │   ├── Checkout/       # Checkout flow (3 steps)
+│   │   ├── About/          # About us page
+│   │   ├── Contact/        # Contact page
+│   │   └── NotFound.tsx    # 404 Page
 │   │
 │   ├── components/
-│   │   ├── atoms/          # Elemente UI de bază (Button, Badge, Icon, Seo...)
-│   │   ├── molecules/      # Grupuri de atoms (ProductCard, CategoryFilter...)
-│   │   ├── organisms/      # Secțiuni complexe (Navbar, Footer, PriceFilter...)
-│   │   └── templates/      # Layout-ul global (Navbar + main + Footer)
+│   │   ├── atoms/          # Basic UI elements (Button, Badge, Icon, Seo...)
+│   │   ├── molecules/      # Groups of atoms (ProductCard, CategoryFilter...)
+│   │   ├── organisms/      # Complex sections (Navbar, Footer, PriceFilter...)
+│   │   └── templates/      # Global layout (Navbar + main + Footer)
 │   │
 │   ├── context/
-│   │   └── CartContext.tsx # State management coș (React Context + localStorage)
+│   │   └── CartContext.tsx # Cart state management (React Context + localStorage)
 │   │
-│   ├── data/               # Date statice și tipuri TypeScript
-│   │   ├── types.ts        # Toate interfețele TypeScript
-│   │   ├── products.ts     # Lista completă de produse
-│   │   ├── categories.ts   # Categorii + iconuri
-│   │   ├── homePageData.ts # Date pentru Home (deals, CTA, newsletter)
-│   │   └── ...             # Alte fișiere de date
+│   ├── data/               # Static data and TypeScript types
+│   │   ├── types.ts        # All TypeScript interfaces
+│   │   ├── products.ts     # Complete list of products
+│   │   ├── categories.ts   # Categories + icons
+│   │   ├── homePageData.ts # Data for Home (deals, CTA, newsletter)
+│   │   └── ...             # Other data files
 │   │
 │   └── utils/
-│       ├── productUtils.ts # Filtrare, sortare, paginare produse
-│       └── filterUtils.ts  # Construire filtre active (badge-uri removable)
+│       ├── productUtils.ts # Filtering, sorting, paginating products
+│       └── filterUtils.ts  # Building active filters (removable badges)
 ```
 
 ---
 
-## 🗺️ Pagini și Rute
+## 🗺️ Pages and Routes
 
-| Rută                    | Componentă | Descriere                                   |
-| ----------------------- | ---------- | ------------------------------------------- |
-| `/`                     | `Home`     | Hero carousel, produse populare, deals, CTA |
-| `/shop`                 | `Shop`     | Grid produse cu filtre URL-based            |
-| `/shop?category=bakery` | `Shop`     | Filtrare pe categorie                       |
-| `/shop?search=apple`    | `Shop`     | Căutare text                                |
-| `/product?id=xxx`       | `Product`  | Detalii produs individual                   |
-| `/cart`                 | `Cart`     | Coș de cumpărături (receipt style)          |
-| `/checkout`             | `Checkout` | Flux shipping → payment → confirmare        |
-| `/about`                | `About`    | Pagina despre companie                      |
-| `/contact`              | `Contact`  | Formular + locații                          |
-| `*`                     | `NotFound` | Pagina 404                                  |
+| Route                   | Component  | Description                                  |
+| ----------------------- | ---------- | -------------------------------------------- |
+| `/`                     | `Home`     | Hero carousel, popular products, deals, CTA  |
+| `/shop`                 | `Shop`     | Product grid with URL-based filters          |
+| `/shop?category=bakery` | `Shop`     | Category filtering                           |
+| `/shop?search=apple`    | `Shop`     | Text search                                  |
+| `/product?id=xxx`       | `Product`  | Individual product details                   |
+| `/cart`                 | `Cart`     | Shopping cart (receipt style)                |
+| `/checkout`             | `Checkout` | Shipping → payment → confirmation flow       |
+| `/about`                | `About`    | About company page                           |
+| `/contact`              | `Contact`  | Form + locations                             |
+| `*`                     | `NotFound` | 404 page                                     |
 
 ---
 
 ## 🧱 Atomic Design
 
-Componentele respectă metodologia **Atomic Design**:
+Components follow the **Atomic Design** methodology:
 
-### Atoms — elemente de bază, fără dependențe
+### Atoms — basic elements without dependencies
 
-- `Button` — buton cu variante (primary, secondary, ghost, outline)
-- `Badge` — etichetă (hot, sale, new, discount)
-- `Icon` — wrapper pentru react-icons / imagini
-- `SearchBar` — câmp de căutare
-- `RangeSlider` — slider dublu pentru interval de preț
-- `Checkbox` — checkbox custom stilizat
+- `Button` — button with variants (primary, secondary, ghost, outline)
+- `Badge` — badge (hot, sale, new, discount)
+- `Icon` — wrapper for react-icons / images
+- `SearchBar` — search input field
+- `RangeSlider` — dual slider for price range
+- `Checkbox` — custom styled checkbox
 - `Logo` — logomark
-- `Seo` — injectare dinamică de meta tags în `<head>`
+- `Seo` — dynamic meta tags injection into `<head>`
 
-### Molecules — combinații de atoms
+### Molecules — combinations of atoms
 
-- `ProductCard` — card produs în grid (imagine, titlu, preț, rating, buton add)
-- `CategoryFilter` — lista de categorii cu count (sidebar)
-- `PriceFilter` — slider preț + filtre culori/condiție (sidebar)
-- `ProductGallery` — galerie imagini produs cu thumbnail-uri
-- `ProductInfo` — detalii produs (preț, stock, seller, size variants)
-- `ProductTabs` — taburi: Description / Additional Info / Reviews
-- `OfferCard` — card deal cu countdown timer
-- `HeroCarousel` — slideshow automat banner
-- `Breadcrumb` — navigare ierarhică
-- `Pagination` — navigare pagini
-- `ShopHero` — header pagina shop (titlu + breadcrumb + active filters)
-- `ShopToolbar` — controale sort / items per page
-- `NewProducts` — sidebar cu ultimele 3 produse adăugate
+- `ProductCard` — product card in grid (image, title, price, rating, add button)
+- `CategoryFilter` — list of categories with item counts (sidebar)
+- `PriceFilter` — price slider + color/condition filters (sidebar)
+- `ProductGallery` — product image gallery with thumbnails
+- `ProductInfo` — product details (price, stock, seller, size variants)
+- `ProductTabs` — tabs: Description / Additional Info / Reviews
+- `OfferCard` — deal card with countdown timer
+- `HeroCarousel` — automatic banner slideshow
+- `Breadcrumb` — hierarchical navigation
+- `Pagination` — page navigation
+- `ShopHero` — shop page header (title + breadcrumb + active filters)
+- `ShopToolbar` — controls for sort / items per page
+- `NewProducts` — sidebar with the last 3 added products
 
-### Organisms — secțiuni complete
+### Organisms — complete sections
 
-- `Navbar` — bara de navigare (header cu links + search + cart + main nav)
-- `Footer` — footer complet cu coloane links + contact + social
-- `PriceFilter` — filtru prețuri complet cu slider
-- `PopularProducts` — secțiune produse populare cu tabs (Today's, Best Sellers, Top Rated)
-- `ShopByCategories` — grid vizual categorii cu iconuri
-- `ProductListsSection` — secțiuni produse (Best Sellers, New Arrivals, Most Popular)
-- `NewsletterBanner` — banner abonare newsletter
-- `ContactForm` — formular contact
+- `Navbar` — navigation bar (header with links + search + cart + main nav)
+- `Footer` — full footer with link columns + contact + social
+- `PriceFilter` — full price filter with slider
+- `PopularProducts` — popular products section with tabs (Today's, Best Sellers, Top Rated)
+- `ShopByCategories` — visual category grid with icons
+- `ProductListsSection` — product sections (Best Sellers, New Arrivals, Most Popular)
+- `NewsletterBanner` — newsletter subscription banner
+- `ContactForm` — contact form
 
 ### Templates
 
-- `Layout` — structura de bază: `<Navbar> + <main><Outlet/></main> + <Footer>`
+- `Layout` — base structure: `<Navbar> + <main><Outlet/></main> + <Footer>`
 
 ---
 
 ## 🛒 Cart (State Management)
 
-Coșul de cumpărături este gestionat prin **React Context API** (`CartContext`):
+The shopping cart is managed via **React Context API** (`CartContext`):
 
-- **Persistență**: Starea e salvată în `localStorage` (cheia configurabilă via `VITE_CART_STORAGE_KEY`)
-- **Funcționalități**: `addToCart`, `removeFromCart`, `updateQuantity`, `clearCart`
-- **Limite**: Suportă `offerLimit` per produs (maxim cantitate pentru deals)
-- **Calcule**: `totalItems` și `totalPrice` sunt derivate automat din lista de produse
-- **Hook**: `useCart()` — acces la context din orice componentă
+- **Persistence**: State is saved in `localStorage` (configurable key via `VITE_CART_STORAGE_KEY`)
+- **Functionalities**: `addToCart`, `removeFromCart`, `updateQuantity`, `clearCart`
+- **Limits**: Supports `offerLimit` per product (maximum quantity for deals)
+- **Calculations**: `totalItems` and `totalPrice` are automatically derived from the product list
+- **Hook**: `useCart()` — access context from any component
 
 ```tsx
 const { addToCart, items, totalPrice } = useCart();
@@ -161,59 +161,59 @@ const { addToCart, items, totalPrice } = useCart();
 
 ---
 
-## 🔍 Filtrare Produse (Shop)
+## 🔍 Product Filtering (Shop)
 
-Filtrele sunt gestionate exclusiv prin **URL search params** — fără state local suplimentar:
+Filters are managed exclusively via **URL search params** — no additional local state:
 
 ```
 /shop?category=bakery&minPrice=5&maxPrice=50&colors=red&conditions=new
 ```
 
-**Flux**:
+**Flow**:
 
-1. URL params → `filterProducts()` → produse filtrate
-2. `sortProducts()` → sortare (featured/price/rating/newest)
-3. `paginateProducts()` → slice pentru pagina curentă
+1. URL params → `filterProducts()` → filtered products
+2. `sortProducts()` → sorting (featured/price/rating/newest)
+3. `paginateProducts()` → slice for the current page
 
-**Criterii filtrare disponibile**:
+**Available Filter Criteria**:
 
-- Categorie (`category`)
-- Căutare text (`search`) — în titlu, descriere, seller, tags
-- Interval de preț (`minPrice`, `maxPrice`)
-- Culori (`colors`) — comma-separated
-- Condiție (`conditions`) — new, refurbished, used
+- Category (`category`)
+- Text Search (`search`) — in title, description, seller, tags
+- Price Range (`minPrice`, `maxPrice`)
+- Colors (`colors`) — comma-separated
+- Condition (`conditions`) — new, refurbished, used
 - Tag (`tag`)
 
-**Active Filters** — fiecare filtru activ e afișat ca badge removable în ShopHero.
+**Active Filters** — each active filter is displayed as a removable badge in ShopHero.
 
 ---
 
-## 🔎 SEO Dinamic
+## 🔎 Dynamic SEO
 
-Implementat cu `react-helmet-async`. Componenta `<Seo />` se plasează în fiecare pagină:
+Implemented with `react-helmet-async`. The `<Seo />` component is placed on every page:
 
 ```tsx
 <Seo
-  title={product.title} // → "<Titlu Produs> – NEST Mart"
+  title={product.title} // → "<Product Title> – NEST Mart"
   description={seoDescription} // shortDescription || description (max 160 chars)
-  canonical={`/product?id=${id}`} // URL canonic
-  ogImage={product.image} // og:image = poza produsului
+  canonical={`/product?id=${id}`} // canonical URL
+  ogImage={product.image} // og:image = product image
   ogType="product" // og:type
 />
 ```
 
-| Pagină   | Title dinamic                          | og:image      | noIndex |
-| -------- | -------------------------------------- | ------------- | ------- |
-| Home     | "Fresh Groceries Online"               | banner        | ❌      |
-| Shop     | "{Categorie} – Shop" sau "Search: ..." | —             | ❌      |
-| Product  | "{Titlu produs}"                       | product.image | ❌      |
-| About    | "About Us"                             | —             | ❌      |
-| Contact  | "Contact Us"                           | —             | ❌      |
-| Cart     | "Shopping Cart"                        | —             | ✅      |
-| Checkout | "Checkout"                             | —             | ✅      |
-| 404      | "404 – Page Not Found"                 | —             | ✅      |
+| Page     | Dynamic Title                         | og:image      | noIndex |
+| -------- | ------------------------------------- | ------------- | ------- |
+| Home     | "Fresh Groceries Online"              | banner        | ❌      |
+| Shop     | "{Category} – Shop" or "Search: ..."  | —             | ❌      |
+| Product  | "{Product Title}"                     | product.image | ❌      |
+| About    | "About Us"                            | —             | ❌      |
+| Contact  | "Contact Us"                          | —             | ❌      |
+| Cart     | "Shopping Cart"                       | —             | ✅      |
+| Checkout | "Checkout"                            | —             | ✅      |
+| 404      | "404 – Page Not Found"                | —             | ✅      |
 
-Configurare via `.env`:
+Environment configuration via `.env`:
 
 ```
 VITE_APP_NAME=NEST Mart & Groceries
@@ -222,7 +222,7 @@ VITE_APP_URL=https://nestmart.md
 
 ---
 
-## ⚙️ Variabile de Mediu (.env)
+## ⚙️ Environment Variables (.env)
 
 ```env
 VITE_APP_NAME=NEST Mart & Groceries
@@ -237,39 +237,39 @@ VITE_FREE_SHIPPING_THRESHOLD=50
 
 ## 💳 Checkout Flow
 
-Procesul de checkout are **3 pași**:
+The checkout process consists of **3 steps**:
 
-1. **Shipping** — formular adresă (firstName, lastName, email, phone, address, city, state, zip, country)
-2. **Payment** — card number, cardholder name, expiry, CVV (simulat, fără procesare reală)
-3. **Confirmation** — număr comandă generat, total plătit, dată estimată livrare
+1. **Shipping** — address form (firstName, lastName, email, phone, address, city, state, zip, country)
+2. **Payment** — card number, cardholder name, expiry, CVV (simulated, no real processing)
+3. **Confirmation** — generated order number, total paid, estimated delivery date
 
-**Calcule**:
+**Calculations**:
 
-- Subtotal din CartContext
+- Subtotal from CartContext
 - Tax: `subtotal × VITE_TAX_RATE` (default 8%)
-- Shipping: `VITE_SHIPPING_COST` (default $5.99) — **gratuit** dacă subtotal ≥ `VITE_FREE_SHIPPING_THRESHOLD`
+- Shipping: `VITE_SHIPPING_COST` (default $5.99) — **free** if subtotal ≥ `VITE_FREE_SHIPPING_THRESHOLD`
 - Grand Total = subtotal + tax + shipping
 
 ---
 
 ## 🎨 Design System
 
-- **Font**: Google Fonts (Inter / sistem)
-- **Culori**: Definite ca CSS custom properties în `utils/colors.css`
-- **Fără framework CSS**: Vanilla CSS per componentă (fiecare folder componentă are `.css` propriu)
-- **Responsive**: Layout-uri cu CSS Grid și Flexbox
+- **Font**: Google Fonts (Inter / system)
+- **Colors**: Defined as CSS custom properties in `utils/colors.css`
+- **No CSS Framework**: Vanilla CSS per component (each component folder has its own `.css` file)
+- **Responsive**: CSS Grid and Flexbox layouts
 
 ---
 
-## 📦 Comenzi utile
+## 📦 Useful Commands
 
 ```bash
-bun run dev       # Dev server cu HMR
-bun run build     # Build producție (TypeScript + Vite)
-bun run preview   # Preview build local
+bun run dev       # Dev server with HMR
+bun run build     # Production build (TypeScript + Vite)
+bun run preview   # Local build preview
 bun run lint      # ESLint check
 ```
 
 ---
 
-## 👥 Echipa 2 — IBM Hackathon
+## 👥 Team 2 — IBM Hackathon
