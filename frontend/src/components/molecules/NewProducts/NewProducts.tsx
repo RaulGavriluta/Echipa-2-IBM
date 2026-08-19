@@ -1,9 +1,10 @@
+import type { Product } from "../../../data/types";
 import ProductMiniCard from "../ProductMiniCard";
 import "./NewProducts.css";
 
 export interface NewProductsProps {
   title?: string;
-  products?: any[];
+  products?: Product[];
   className?: string;
 }
 
@@ -21,8 +22,8 @@ const NewProducts = ({
         {products.map((product) => {
           const id = product.id;
           const title = product.title;
-          const img = product.imageSrc || product.image;
-          const val = product.price !== undefined ? product.price : product.currentPrice;
+          const img = product.image;
+          const val = product.currentPrice;
 
           return (
             <ProductMiniCard
