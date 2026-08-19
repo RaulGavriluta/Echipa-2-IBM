@@ -63,7 +63,10 @@ const Navbar = () => {
     }
   };
 
-  const renderAction = (action: (typeof mainNav.actions)[number], opts?: { hideLabel?: boolean; size?: string }) => {
+  const renderAction = (
+    action: (typeof mainNav.actions)[number],
+    opts?: { hideLabel?: boolean; size?: string },
+  ) => {
     const isCart = action.icon === "FiShoppingCart";
     const count = isCart ? totalItems : action.count;
 
@@ -113,24 +116,32 @@ const Navbar = () => {
 
           <div className="navbar-top__right">
             <span className="navbar-top__phone">
-              {header.phone.description}{" "}
-              <strong>{header.phone.number}</strong>
+              {header.phone.description} <strong>{header.phone.number}</strong>
             </span>
-            <select className="navbar-top__select" defaultValue={header.languages[0]}>
+            <select
+              className="navbar-top__select"
+              defaultValue={header.languages[0]}
+            >
               {header.languages.map((lang) => (
-                <option key={lang} value={lang}>{lang}</option>
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
               ))}
             </select>
-            <select className="navbar-top__select" defaultValue={header.currencies[0]}>
+            <select
+              className="navbar-top__select"
+              defaultValue={header.currencies[0]}
+            >
               {header.currencies.map((curr) => (
-                <option key={curr} value={curr}>{curr}</option>
+                <option key={curr} value={curr}>
+                  {curr}
+                </option>
               ))}
             </select>
           </div>
         </div>
       </div>
 
-  
       <div className="navbar-main">
         <div className="navbar-main__inner">
           <button
@@ -158,10 +169,11 @@ const Navbar = () => {
             {mainNav.actions.map((action) => renderAction(action))}
           </div>
 
-       
           <div className="navbar-main__actions-mobile">
             {mainNav.actions
-              .filter((a) => a.icon === "FiHeart" || a.icon === "FiShoppingCart")
+              .filter(
+                (a) => a.icon === "FiHeart" || a.icon === "FiShoppingCart",
+              )
               .map((action) => {
                 const isCart = action.icon === "FiShoppingCart";
                 const count = isCart ? totalItems : action.count;
@@ -184,7 +196,6 @@ const Navbar = () => {
         </div>
       </div>
 
-
       <div className="navbar-bottom">
         <div className="navbar-bottom__inner">
           <div className="navbar-bottom__browse-container" ref={browseRef}>
@@ -204,7 +215,7 @@ const Navbar = () => {
                 color="var(--color-white)"
                 className={clsx(
                   "navbar-bottom__browse-arrow",
-                  isBrowseOpen && "navbar-bottom__browse-arrow--open"
+                  isBrowseOpen && "navbar-bottom__browse-arrow--open",
                 )}
               />
             </Button>
@@ -226,7 +237,9 @@ const Navbar = () => {
                           className="navbar-browse__item-icon"
                         />
                       )}
-                      <span className="navbar-browse__item-label">{cat.label}</span>
+                      <span className="navbar-browse__item-label">
+                        {cat.label}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -248,7 +261,11 @@ const Navbar = () => {
           </ul>
 
           <div className="navbar-bottom__phone">
-            <Icon icon={FiHeadphones} size="1.5rem" color="var(--color-green)" />
+            <Icon
+              icon={FiHeadphones}
+              size="1.5rem"
+              color="var(--color-green)"
+            />
             <div className="navbar-bottom__phone-text">
               <strong>{bottomNav.phone.number}</strong>
               <span>{bottomNav.phone.description}</span>
@@ -257,12 +274,13 @@ const Navbar = () => {
         </div>
       </div>
 
-
       {isMobileMenuOpen && (
         <div className="navbar-mobile-overlay" onClick={closeMobileMenu} />
       )}
 
-      <div className={`navbar-mobile-drawer ${isMobileMenuOpen ? "navbar-mobile-drawer--open" : ""}`}>
+      <div
+        className={`navbar-mobile-drawer ${isMobileMenuOpen ? "navbar-mobile-drawer--open" : ""}`}
+      >
         <div className="navbar-mobile-drawer__header">
           <Logo size="sm" />
           <button

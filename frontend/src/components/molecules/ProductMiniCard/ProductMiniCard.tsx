@@ -96,7 +96,9 @@ const ProductMiniCard: React.FC<ProductMiniCardProps> = ({
       <div className="product-mini-card__content">
         <h4 className="product-mini-card__title">
           {title}
-          {isOffer && <span className="product-mini-card__offer-badge">Offer</span>}
+          {isOffer && (
+            <span className="product-mini-card__offer-badge">Offer</span>
+          )}
         </h4>
         {isDetailed ? (
           <>

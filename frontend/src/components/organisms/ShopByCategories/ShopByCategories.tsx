@@ -14,7 +14,6 @@ const ShopByCategories = () => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    // 2px tolerance for fractional pixel offsets
     const isAtStart = container.scrollLeft <= 2;
     const isAtEnd =
       container.scrollLeft + container.clientWidth >= container.scrollWidth - 2;
@@ -45,7 +44,7 @@ const ShopByCategories = () => {
     const gap = parseFloat(getComputedStyle(container).gap) || 20;
     const firstSlide = container.querySelector(".shop-categories-slide");
     if (!firstSlide) return;
-    
+
     const slideWidth = firstSlide.getBoundingClientRect().width;
     const scrollAmount = (slideWidth + gap) * 3;
 
@@ -76,7 +75,15 @@ const ShopByCategories = () => {
             disabled={!canScrollLeft}
             aria-label="Previous categories"
           >
-            <Icon icon={FiArrowLeft} size="1rem" color={canScrollLeft ? "var(--color-text-dark)" : "var(--color-text-muted)"} />
+            <Icon
+              icon={FiArrowLeft}
+              size="1rem"
+              color={
+                canScrollLeft
+                  ? "var(--color-text-dark)"
+                  : "var(--color-text-muted)"
+              }
+            />
           </button>
           <button
             className={`shop-categories-nav-btn ${!canScrollRight ? "shop-categories-nav-btn--disabled" : ""}`}
@@ -84,7 +91,15 @@ const ShopByCategories = () => {
             disabled={!canScrollRight}
             aria-label="Next categories"
           >
-            <Icon icon={FiArrowRight} size="1rem" color={canScrollRight ? "var(--color-text-dark)" : "var(--color-text-muted)"} />
+            <Icon
+              icon={FiArrowRight}
+              size="1rem"
+              color={
+                canScrollRight
+                  ? "var(--color-text-dark)"
+                  : "var(--color-text-muted)"
+              }
+            />
           </button>
         </div>
       </div>

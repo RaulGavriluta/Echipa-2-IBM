@@ -15,7 +15,11 @@ const ProductListsSection = () => {
 
   const recentlyAdded = [...products]
     .filter((p) => p.createdAt !== undefined)
-    .sort((a, b) => new Date(b.createdAt || "").getTime() - new Date(a.createdAt || "").getTime())
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt || "").getTime() -
+        new Date(a.createdAt || "").getTime(),
+    )
     .slice(0, 3);
 
   const topRated = [...products]

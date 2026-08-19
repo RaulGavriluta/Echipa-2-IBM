@@ -18,9 +18,7 @@ const CtaCard = ({
   className,
 }: CtaCardProps) => {
   return (
-    <div
-      className={clsx("cta-card", className)}
-    >
+    <div className={clsx("cta-card", className)}>
       {imageUrl && <img src={imageUrl} alt={title} className="cta-card-bg" />}
       <div className="cta-card-content">
         <h3 className="cta-card-title">{title}</h3>

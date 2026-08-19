@@ -505,6 +505,7 @@ const Checkout = () => {
                       price={item.product.currentPrice}
                       isOffer={item.product.isOffer}
                       variant="compact"
+                      to={`/product?id=${item.product.id}`}
                     />
                     <span className="checkout-summary__qty">
                       ×{item.quantity}

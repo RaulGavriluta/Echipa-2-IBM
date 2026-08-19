@@ -106,6 +106,7 @@ const Cart = () => {
                     rating={item.product.rating}
                     isOffer={item.product.isOffer}
                     variant="compact"
+                    to={`/product?id=${item.product.id}`}
                   />
                 </div>
 
